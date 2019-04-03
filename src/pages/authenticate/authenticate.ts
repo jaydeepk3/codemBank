@@ -3,10 +3,10 @@ import { AdvertPage } from './../advert/advert';
 import { NewToTheAppPage } from './../new-to-the-app/new-to-the-app';
 import { OpenWalletAccountPage } from './../open-wallet-account/open-wallet-account';
 import { ApiProvider } from './../../providers/api/api';
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone,ViewChild,ElementRef } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { Events, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
-
+import { Events, NavController, NavParams, ViewController, ModalController,AlertController } from 'ionic-angular';
+import { ForgotPinPage } from './../forgot-pin/forgot-pin';
 declare var cordova: any;
 
 /**
@@ -37,14 +37,17 @@ export class Authenticate {
   user: any = null;
 
   test: boolean = true;
+  cunt = 1;
 
-  constructor(private zone: NgZone, public storage: Storage, public events: Events, public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public viewCtrl: ViewController, public api: ApiProvider, public userProvider: UserProvider) {
+  fetching: boolean = false;
+  constructor(private zone: NgZone, public storage: Storage, public events: Events, public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public viewCtrl: ViewController, public api: ApiProvider, public userProvider: UserProvider,public alertCtrl: AlertController) {
     this.test = api.isTest;
     storage.get('user_login').then(userStr => {
       if (userStr !== null) {
         this.user = JSON.parse(userStr);
       }
     });
+  //  this.getSplashImg();
   }
 
   ionViewDidLoad() {
@@ -137,5 +140,8 @@ export class Authenticate {
   register() {
     this.navCtrl.push(NewToTheAppPage);
   }
-
+  forgotPin()
+  {
+    this.navCtrl.push(ForgotPinPage);
+  }
 }

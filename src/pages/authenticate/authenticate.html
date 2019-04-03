@@ -1,17 +1,3 @@
-<!--
-  Generated template for the Authenticate page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-
-<!--<ion-header>
-
-  <ion-navbar>
-    <ion-title class="title-icon">{{test ? 'Test -' : ''}} Authenticate</ion-title>
-  </ion-navbar>
-
-</ion-header>-->
 <ion-content no-bounce>
   <div id="wrapping">
     <div id="wrapping-inner">
@@ -65,6 +51,10 @@
           <div class="loader-ret">{{ret}}</div>
         </div>
 
+        <div *ngIf="!authenticating" class="fgt-btn"
+          (tap)="forgotPin()">
+          Lost Your Pin Click <a>Here</a> ?
+        </div>
         <div *ngIf="!authenticating" class="small-buttons-a" margin-left
           (tap)="register()">
           &nbsp;

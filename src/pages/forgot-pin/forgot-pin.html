@@ -1,0 +1,46 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title class="title-icon">{{test ? 'Test -' : ''}} Forgot Pin</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<ion-list>
+
+	    <ion-item>
+	      <ion-icon name="call" item-start></ion-icon>
+	      <ion-input placeholder="Enter Phone..." type="tel" clearInput [(ngModel)]="data.phone"></ion-input>
+	    </ion-item>
+	    <ion-item>
+	      <ion-icon name="apps" item-start></ion-icon>
+	      <ion-input placeholder="Enter Account Number..." type="tel" clearInput [(ngModel)]="data.accountnumber"></ion-input>
+	    </ion-item>
+	    <ion-item>
+	      <ion-icon name="list" item-start></ion-icon>
+	      <ion-input placeholder="Enter National ID..." type="number" clearInput [(ngModel)]="data.nid"></ion-input>
+	    </ion-item>
+	    <ion-item>
+	      <ion-icon name="card" item-start></ion-icon>
+	      <ion-input placeholder="Enter Last 4 Digit of Card..." type="number" clearInput [(ngModel)]="data.cardno" minlength="4" maxlength="4"></ion-input>
+	    </ion-item>
+	    <ion-item>
+	      <ion-icon name="cash" item-start></ion-icon>
+	      <ion-input placeholder="Enter One amount done in last 30 days..." type="number" clearInput [(ngModel)]="data.lstamount"></ion-input>
+	    </ion-item>
+	</ion-list>
+	<div class="form-action no-top-padding" *ngIf="data.phone.length > 0 && data.accountnumber.length > 0 && data.nid.length > 0 && data.cardno.length > 0 && data.lstamount.length > 0">
+	    <button ion-button icon-left block (tap)="forgotPin()">
+	      <ion-icon name="key"></ion-icon>
+	      Submit
+	    </button>
+	</div>
+	
+	<div class="loader-ret">{{ret}}</div>
+
+	<div class="loader-load" *ngIf="forgotpin">
+	    <ion-spinner name="bubbles"></ion-spinner>
+	</div>
+</ion-content>

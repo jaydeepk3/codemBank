@@ -32,6 +32,29 @@ page-authenticate {
             font-weight: 300;
           }
         }
+        .textClass{
+          min-width: 25px !important;
+          max-width: 25px !important;
+          width: 25px !important;
+          height: 32px !important;
+          float:left;
+          color:#937001 !important;
+        }
+        .textClassChange{
+          background-color:#937001 !important;
+          min-width: 25px !important;
+          max-width: 25px !important;
+          width: 25px !important;
+          height: 32px !important;
+          float:left;
+        }
+
+        div .fgt-btn{
+          margin:15px !important;
+          text-align:center !important;
+          font-family: 'BrandFont' !important;
+          font-size: 15px !important;
+        }
         .small-buttons-a,
         .small-buttons-b {
           display: block;

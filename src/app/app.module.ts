@@ -59,7 +59,7 @@ import { DatePicker } from '@ionic-native/date-picker';
 import { DateProvider } from '../providers/date/date';
 import { Market } from '@ionic-native/market';
 import { ForceUpdateProvider } from '../providers/force-update/force-update';
-
+import { ForgotPinPage } from '../pages/forgot-pin/forgot-pin';
 @NgModule({
   declarations: [
     MyApp,
@@ -100,7 +100,8 @@ import { ForceUpdateProvider } from '../providers/force-update/force-update';
     ExitingCustomerPage,
     NewToTheAppPage,
     SelectDatePage,
-    AdvertPage
+    AdvertPage,
+    ForgotPinPage,
   ],
   imports: [
     BrowserModule,
@@ -148,7 +149,8 @@ import { ForceUpdateProvider } from '../providers/force-update/force-update';
     ExitingCustomerPage,
     NewToTheAppPage,
     SelectDatePage,
-    AdvertPage
+    AdvertPage,
+    ForgotPinPage,
   ],
   providers: [
     StatusBar,

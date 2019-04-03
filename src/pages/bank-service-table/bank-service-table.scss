@@ -1,0 +1,49 @@
+page-bank-service-table {
+  .rates {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    tr:nth-child(even) {
+      td {
+        background: rgba(color($colors, primary), 0.6);
+        color: color($colors, dark);
+      }
+    }
+    tr:nth-child(odd) {
+      td {
+        background: rgba(color($colors, primary), 0.3);
+        color: color($colors, dark);
+      }
+    }
+    tr:first-child {
+      td {
+        font-weight: bolder;
+      }
+    }
+    tr {
+      td {
+        border-bottom: solid 1px color($colors, light);
+        border-right: solid 1px color($colors, light);
+        padding: 8px 4px;
+        font-size: 11px;
+        vertical-align: middle;
+      }
+      td:last-child {
+        border-right: none;
+      }
+      td.bg {
+        background: color($colors, primary);
+        color: color($colors, light);
+      }
+    }
+    tr:last-child {
+      td {
+        border-bottom: none;
+      }
+    }
+    .no-border {
+      border-right: none;
+    }
+  }
+}

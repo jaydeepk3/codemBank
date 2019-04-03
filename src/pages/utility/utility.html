@@ -1,0 +1,91 @@
+<!--
+  Generated template for the UtilityPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title class="title-icon">{{test ? 'Test -' : ''}} {{util.name}}</ion-title>
+    <ion-buttons end>
+      <button ion-button class="my-rounded-b" round outline icon-end color="danger" (click)="logOut()">
+        Log Out
+        <ion-icon name="lock"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item (tap)="selectAccount(0)">
+      <ion-label color="darkText" stacked>
+        Debit Account
+      </ion-label>
+      <ion-input placeholder="Select Debit Account..." type="text" readonly="true" clearInput [(ngModel)]="sourceAccount.account"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="util.sendown === 'Y' || util.saveben === 'Y'">
+      <ion-select interface="popover" [(ngModel)]="numberType" (ngModelChange)="typeChange($event)">
+        <ion-option value="own" *ngIf="util.sendown === 'Y'">Own Number</ion-option>
+        <ion-option value="ben" *ngIf="util.saveben === 'Y'">Select Beneficiary</ion-option>
+        <ion-option value="other">Other {{util.fieldname}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item (tap)="selectBeneficial()" *ngIf="numberType === 'ben'">
+      <ion-label color="darkText" stacked>
+        Beneficiary
+      </ion-label>
+      <ion-input placeholder="Select Beneficiary..." type="text" readonly="true" clearInput [(ngModel)]="beneficial.name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="darkText" stacked>
+        {{util.fieldname}}
+      </ion-label>
+      <ion-input [disabled]="numberType === 'ben' ? '' : null" [placeholder]="'Enter ' + util.fieldname + '...'" [type]="util.fieldtype === 'N' ? 'tel' : 'text'" [(ngModel)]="creditaccount"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="util.benphone === 'Y'">
+      <ion-label color="darkText" stacked>
+        Beneficiary Phone
+      </ion-label>
+      <ion-input placeholder="Enter Beneficiary Phone..." type="tel" [(ngModel)]="benPhone"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="util.amntedit === 'Y'">
+      <ion-label color="darkText" stacked>
+        Amount
+      </ion-label>
+      <ion-input placeholder="Enter Amount..." type="tel" clearInput [(ngModel)]="amount"></ion-input>
+    </ion-item>
+
+
+    <ion-item-divider *ngIf="util.saveben === 'Y' && numberType !== 'ben'">
+      Do you want to save the beneficiary?
+    </ion-item-divider>
+
+    <ion-item *ngIf="util.saveben === 'Y' && numberType !== 'ben'">
+      <ion-label>Save Beneficiary</ion-label>
+      <ion-checkbox [(ngModel)]="saveBenef"></ion-checkbox>
+    </ion-item>
+
+    <ion-item *ngIf="saveBenef">
+      <ion-label color="darkText" stacked>
+        Beneficiary Name
+      </ion-label>
+      <ion-input placeholder="Enter Beneficiary Name..." type="text" clearInput [(ngModel)]="benefName"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-input class="submit-input" *ngIf="((util.amntedit === 'Y' && amount.length > 0) || (util.amntedit === 'N')) && creditaccount.length > 0 && sourceAccount.account.length > 0" type="text" (ionFocus)="continue()"></ion-input>
+
+  <div class="form-action no-top-padding" *ngIf="((util.amntedit === 'Y' && amount.length > 0) || (util.amntedit === 'N')) && creditaccount.length > 0 && sourceAccount.account.length > 0">
+    <button ion-button block (tap)="continue()">
+      Continue
+      <ion-icon name="arrow-forward"></ion-icon>
+    </button>
+  </div>
+</ion-content>

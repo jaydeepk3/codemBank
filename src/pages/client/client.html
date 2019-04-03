@@ -1,0 +1,7 @@
+<ion-tabs #homeTabs selectedIndex="0" (ionChange)="tabsChanged($event)">
+  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="My Money" tabIcon="stats"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="Move Money" tabIcon="swap"></ion-tab>
+  <ion-tab [root]="tab4Root" tabTitle="e-Pay" tabIcon="pricetag"></ion-tab>
+  <ion-tab [root]="tab5Root" tabTitle="Options" tabIcon="more"></ion-tab>
+</ion-tabs>

@@ -1,0 +1,19 @@
+page-bank-service-map-marker {
+  .cc {
+    margin: 8px;
+    tr {
+      td {
+        vertical-align: top;
+        padding: 8px;
+      }
+      td:first-child {
+        text-align: right;
+        font-weight: bolder;
+        width: 112px;
+      }
+    }
+  }
+  [ion-button] {
+    margin-bottom: 0px;
+  }
+}

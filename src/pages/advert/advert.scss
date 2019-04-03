@@ -1,0 +1,18 @@
+page-advert {
+  .one,
+  .two,
+  .three {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  .one {
+    background-image: url('../assets/img/1.jpg');
+  }
+  .two {
+    background-image: url('../assets/img/2.jpg');
+  }
+  .three {
+    background-image: url('../assets/img/3.jpg');
+  }
+}

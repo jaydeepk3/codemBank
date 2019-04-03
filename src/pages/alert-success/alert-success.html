@@ -1,0 +1,35 @@
+<!--
+  Generated template for the AlertSuccessPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="middle-cus-title">
+      <span class="branded-title">
+        <span class="title-dark-text">mobile</span> banking {{test ? '- Test' : ''}} </span>
+    </ion-title>
+  </ion-toolbar>
+
+  <!--<ion-navbar color="primary">
+      <ion-title>Success: {{sTitle}}</ion-title>
+    </ion-navbar>-->
+
+</ion-header>
+
+
+<ion-content class="prim-colo">
+  <div class="all-content">
+    <div class="ic">
+      <ion-icon [name]="forceUpdate ? 'warning' : 'truecheckmark'"></ion-icon>
+    </div>
+    <div class="te">
+      <h2 *ngIf="forceUpdate != true">Success!</h2>
+      <div class="txtx" [innerHTML]="sMessage"></div>
+      <p *ngIf="!vis">{{'Auto dismiss in ' + (indT-ind) + ' seconds'}}</p>
+      <button *ngIf="!vis" ion-button block (tap)="visNow()">Cancel</button>
+      <button *ngIf="vis" ion-button block (tap)="dismis()">{{forceUpdate ? 'Update App' : 'OK'}}</button>
+    </div>
+  </div>
+</ion-content>

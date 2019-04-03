@@ -1,0 +1,69 @@
+<!--
+  Generated template for the AccountInfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title class="title-icon">{{test ? 'Test -' : ''}} Account Info</ion-title>
+    <ion-buttons end>
+      <button ion-button class="my-rounded-b" round outline icon-end color="danger" (click)="logOut()">
+        Log Out
+        <ion-icon name="lock"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list class="accounts accounts2">
+    <ion-item>
+      <span class="account-item-title">{{account.title}}</span>
+      <span class="account-item-number">{{account.account}} ({{account.type}})</span>
+      <div class="account-item-balance">Available Balance
+        <span>{{account.balance}} {{account.currency}}</span>
+      </div>
+      <div *ngIf="account.tlist === 'C'" class="account-item-balance">Current Balance
+        <span>{{account.currentbal}} {{account.currency}}</span>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <div *ngIf="error || fetching">
+    <div class="loader-load" *ngIf="fetching">
+      <ion-spinner name="bubbles"></ion-spinner>
+    </div>
+    <div class="loader-ret">{{ret}}</div>
+  </div>
+
+  <table class="statement" *ngIf="transactions.length > 0">
+    <tr>
+      <th>Description
+        <br>
+        <span class="grey">Ref</span>
+        <br>
+        <span class="grey">Date Time</span>
+      </th>
+      <th>Amount</th>
+    </tr>
+    <tr *ngFor="let trans of transactions" (tap)="showTransaction(trans)">
+      <td>
+        <span class="bold">{{trans.description}}</span>
+        <br>
+        <span class="grey">{{trans.user}} / {{trans.branch}} / {{trans.ope}} / {{trans.refno}}</span>
+        <br>
+        <span class="grey">{{trans.date}} {{trans.time}}</span>
+      </td>
+      <td>
+        <span [class]="trans.sens === 'D' ? 'debit' : 'credit'">{{trans.sens === 'D' ? '-' : '+'}}{{trans.amount}}
+          <ion-icon [name]="trans.sens === 'D' ? 'ios-arrow-down' : 'ios-arrow-up'"></ion-icon>
+        </span>
+      </td>
+    </tr>
+  </table>
+
+  <div class="loader-ret" *ngIf="transactions.length === 0 && !fetching">No recent transactions</div>
+</ion-content>

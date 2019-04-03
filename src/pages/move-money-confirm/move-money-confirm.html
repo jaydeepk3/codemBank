@@ -1,0 +1,197 @@
+<!--
+  Generated template for the MoveMoneyConfirmPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <button *ngIf="!fetchingC && !fetching && !successC" ion-button
+        (click)="hideModal()">
+        {{error ? 'Return': 'Cancel'}}
+      </button>
+    </ion-buttons>
+    <ion-title class="title-icon">{{test ? 'Test -' : ''}}
+      {{data_.extras.service.name}} Confirm</ion-title>
+    <ion-buttons end>
+      <button ion-button class="my-rounded-b" round outline icon-end
+        color="danger" (click)="logOut()">
+        Log Out
+        <ion-icon name="lock"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-list *ngIf="success && data_.extras.service.movemoneyid !== '99'">
+    <ion-item>
+      <p>
+        Source Account
+      </p>
+      <h2>
+        {{data_.extras.sourceAccount.account}}
+      </h2>
+    </ion-item>
+
+    <ion-item>
+      <p>
+        Beneficiary Bank
+      </p>
+      <h2>
+        {{data_.extras.bank.bankname}}
+      </h2>
+    </ion-item>
+
+    <ion-item>
+      <p>
+        Beneficiary Account
+      </p>
+      <h2>
+        {{transa.acctno}}
+      </h2>
+    </ion-item>
+
+    <ion-item>
+      <p>
+        Beneficiary Name
+      </p>
+      <h2>
+        {{transa.accname}}
+      </h2>
+    </ion-item>
+
+    <ion-item *ngIf="data_.extras.beneficial.hasOwnProperty('phone') &&
+      data_.extras.beneficial.phone.length> 0">
+      <p>
+        Beneficiary Phone
+      </p>
+      <h2>
+        {{data_.extras.beneficial.phone}}
+      </h2>
+    </ion-item>
+
+    <ion-item *ngIf="data_.extras.beneficial.hasOwnProperty('email') &&
+      data_.extras.beneficial.email.length> 0">
+      <p>
+        Beneficiary Email
+      </p>
+      <h2>
+        {{data_.extras.beneficial.email}}
+      </h2>
+    </ion-item>
+
+    <ion-item>
+      <p>
+        {{transa.transaction.currdev !== transa.transaction.currdev1 &&
+        transa.transaction.taux !== '1' ? 'Amount To Debit' : 'Amount'}}
+      </p>
+      <h2>
+        {{(""+transa.transaction.amount1) | number}} {{currency1}}
+      </h2>
+    </ion-item>
+    <ion-item *ngIf="transa.transaction.currdev !== transa.transaction.currdev1
+      && transa.transaction.taux !== '1'">
+      <p>Exchange Rate</p>
+      <h2>{{transa.transaction.taux}}</h2>
+    </ion-item>
+    <ion-item *ngIf="transa.transaction.currdev !== transa.transaction.currdev1
+      && transa.transaction.taux !== '1'">
+      <p>Amount To Credit</p>
+      <h2>
+        {{(""+transa.transaction.amount2) | number}} {{currency2}}
+      </h2>
+    </ion-item>
+
+    <ion-item no-lines *ngIf="(''+transa.transaction.description).toLowerCase()
+      !== 'false'">
+      <p>
+        Description
+      </p>
+      <h2>
+        {{transa.transaction.description}}
+      </h2>
+    </ion-item>
+    <ion-item-divider *ngIf="!fetchingC && success && !successC &&
+      (data_.extras.service.banktype === 'P' || data_.extras.service.banktype
+      === 'B' || data_.extras.service.banktype === 'M' ||
+      data_.extras.service.banktype === 'O')">
+      Do you want to save the beneficiary?
+    </ion-item-divider>
+    <ion-item no-lines *ngIf="!fetchingC && success && !successC &&
+      (data_.extras.service.banktype === 'P' || data_.extras.service.banktype
+      === 'B' || data_.extras.service.banktype === 'M' ||
+      data_.extras.service.banktype === 'O')">
+      <ion-label>Save Beneficiary</ion-label>
+      <ion-checkbox [(ngModel)]="saveBenef"></ion-checkbox>
+    </ion-item>
+    <ion-item-divider *ngIf="!fetchingC && success && !successC">
+      Type your PIN to confirm
+    </ion-item-divider>
+    <ion-item *ngIf="!fetchingC && success && !successC">
+      <ion-input placeholder="PIN..." type="tel" class="input-pin" clearInput
+        [(ngModel)]="pass" (ngModelChange)="pinChange()"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-list *ngIf="success && data_.extras.service.movemoneyid === '99'">
+    <ion-item-divider>
+      Do you want to delete the beneficiary?
+    </ion-item-divider>
+    <ion-item>
+      <span class="account-item-title">{{data_.extras.beneficial.name}}</span>
+      <span class="account-item-number">{{data_.extras.beneficial.account}}</span>
+      <span class="account-item-balance">{{data_.extras.beneficial.currency}} /
+        {{data_.extras.beneficial.bankname}}</span>
+    </ion-item>
+    <ion-item-divider *ngIf="!fetchingC && success && !successC">
+      Type your PIN to confirm
+    </ion-item-divider>
+    <ion-item *ngIf="!fetchingC && success && !successC">
+      <ion-input placeholder="PIN..." type="tel" class="input-pin" clearInput
+        [(ngModel)]="pass" (ngModelChange)="pinChange()"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <div class="loader-load" *ngIf="fetching || fetchingC">
+    <ion-spinner name="bubbles"></ion-spinner>
+  </div>
+  <div *ngIf="!success">
+    <div class="loader-ret" *ngIf="!success">{{ret}}</div>
+    <div class="loader-ret-success" *ngIf="success">{{ret}}</div>
+  </div>
+  <div *ngIf="success">
+    <div class="loader-ret" *ngIf="!successC">{{ret}}</div>
+    <div class="loader-ret-success" *ngIf="successC">{{ret}}</div>
+  </div>
+
+  <div class="form-action no-top-padding" *ngIf="!fetching && !success &&
+    error">
+    <button ion-button icon-left block (tap)="fetchBanks()">
+      <ion-icon name="refresh"></ion-icon>
+      Retry
+    </button>
+  </div>
+
+  <ion-input class="submit-input" *ngIf="!fetching && !fetchingC && success &&
+    !successC && pass.length> 0" type="text" (ionFocus)="confirmFinal()"></ion-input>
+  <!--<div class="form-action no-top-padding" *ngIf="!fetching && !fetchingC &&
+    success && !successC && pass.length> 0">
+    <button ion-button icon-left block (tap)="confirmFinal()">
+      <ion-icon name="checkmark-circle"></ion-icon>
+      {{data_.extras.service.movemoneyid === '99' ? 'Confirm Delete' : 'Confirm
+      Transfer'}}
+    </button>
+  </div>-->
+  <div class="form-action no-top-padding" *ngIf="successC">
+    <button ion-button icon-left block color="success" (tap)="success_()">
+      <ion-icon name="checkmark-circle"></ion-icon>
+      Done
+    </button>
+  </div>
+</ion-content>

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "262379723069",
+    "firebase_url": "https://coge-mbank.firebaseio.com",
+    "project_id": "coge-mbank",
+    "storage_bucket": "coge-mbank.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:262379723069:android:c1f46835ac81f638",
+        "android_client_info": {
+          "package_name": "rw.co.cogebanque.client"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "262379723069-dbjnb5r7e99cenot30t95mg18gcngefl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiPG3yKIGNtWW3CjVtdFXwWr7bEGaMbNM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

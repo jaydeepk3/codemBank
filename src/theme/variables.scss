@@ -1,0 +1,91 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/v2/theming/
+$font-path: "../assets/fonts";
+@import "ionic.globals";
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+$colors: ( primary: #cf7c34, secondary: #488aff, danger: #f53d3d, success: #488aff, light: #f4f4f4, dark: #222, darkText:#959595);
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+@import "ionic.theme.default";
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/v2/ionicons/
+@import "ionic.ionicons";
+// Fonts
+// --------------------------------------------------
+@import "roboto";
+@import "noto-sans";
+$tabs-background: color($colors, primary);
+//
+$tabs-tab-color-active:color($colors, light);
+$tabs-tab-color-inactive: rgba(color($colors, light), 0.6);
+//
+$tabs-ios-tab-text-color: rgba(color($colors, light), 0.6);
+$tabs-md-tab-text-color: rgba(color($colors, light), 0.6);
+$tabs-wp-tab-text-color: rgba(color($colors, light), 0.6);
+//
+$tabs-ios-tab-icon-color: rgba(color($colors, light), 0.6);
+$tabs-md-tab-icon-color: rgba(color($colors, light), 0.6);
+$tabs-wp-tab-icon-color: rgba(color($colors, light), 0.6);
+//
+$tabs-ios-tab-text-color-active: color($colors, light);
+$tabs-md-tab-text-color-active: color($colors, light);
+$tabs-wp-tab-text-color-active: color($colors, light);
+//
+$tabs-ios-tab-icon-color-active: color($colors, light);
+$tabs-md-tab-icon-color-active: color($colors, light);
+$tabs-wp-tab-icon-color-active: color($colors, light);
+//
+$tabs-ios-tab-font-size: 10px;
+$tabs-md-tab-font-size: 10px;
+$tabs-wp-tab-font-size: 10px;
+//
+$tabs-ios-tab-icon-size: 20px;
+$tabs-md-tab-icon-size: 20px;
+$tabs-wp-tab-icon-size: 20px;
+//
+$toolbar-ios-title-font-size: 1.5rem;
+$toolbar-md-title-font-size: 1.5rem;
+$toolbar-wp-title-font-size: 1.5rem;
+//
+$toolbar-ios-title-text-color: color($colors, primary);
+$toolbar-md-title-text-color: color($colors, primary);
+$toolbar-wp-title-text-color: color($colors, primary);
+//
+$item-ios-divider-background: #e2e2e2;
+$item-md-divider-background: #e2e2e2;
+$item-wp-divider-background: #e2e2e2;
+//
+$segment-button-ios-toolbar-button-max-width: 200px;
+$segment-button-md-toolbar-button-max-width: 200px;
+$segment-button-wp-toolbar-button-max-width: 200px;
+//
+$popover-ios-width: 90%;
+$popover-md-width: 90%;
+$popover-wp-width: 90%;

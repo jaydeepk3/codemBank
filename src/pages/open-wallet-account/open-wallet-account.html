@@ -1,0 +1,117 @@
+<!--
+  Generated template for the OpenWalletAccountPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title class="title-icon">{{test ? 'Test -' : ''}} Open Wallet Account</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+
+    <ion-item>
+      <ion-label color="darkText" stacked>
+        First Name
+      </ion-label>
+      <ion-input placeholder="Enter First Name..." type="text" clearInput [(ngModel)]="data.fname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="darkText" stacked>
+        Last Name
+      </ion-label>
+      <ion-input placeholder="Enter Last Name..." type="text" clearInput [(ngModel)]="data.lname"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="darkText" stacked>
+        Gender
+      </ion-label>
+      <ion-select interface="popover" [(ngModel)]="data.gender">
+        <ion-option value="">Select Gender...</ion-option>
+        <ion-option value="7">Female</ion-option>
+        <ion-option value="8">Male</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item (tap)="selectDate()">
+      <ion-label color="darkText" stacked>
+        Date Of Birth
+      </ion-label>
+      <ion-input placeholder="Select Date Of Birth..." type="text" disabled readonly="true" clearInput [(ngModel)]="data.dob"></ion-input>
+    </ion-item>
+    <!--<ion-item>
+      <ion-label color="darkText" stacked>
+        Date Of Birth
+      </ion-label>
+      <ion-datetime placeholder="Select Date Of Birth..." displayFormat="DD/MM/YYYY" [(ngModel)]="data.dob"></ion-datetime>
+    </ion-item>-->
+    <ion-item>
+      <ion-label color="darkText" stacked>
+        Phone
+      </ion-label>
+      <ion-input placeholder="Enter Phone..." type="tel" clearInput [(ngModel)]="data.phone"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="darkText" stacked>
+        Email
+      </ion-label>
+      <ion-input placeholder="Enter Email..." type="email" clearInput [(ngModel)]="data.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="darkText" stacked>
+        Province
+        <ion-spinner *ngIf="province_loading" name="bubbles"></ion-spinner>
+      </ion-label>
+      <ion-select interface="popover" [(ngModel)]="data.province" (ngModelChange)="provinceChange($event)">
+        <ion-option value="">Select Province...</ion-option>
+        <ion-option *ngFor="let province of provinces" [value]="province.code">{{province.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label color="darkText" stacked>
+        District
+        <ion-spinner *ngIf="district_loading" name="bubbles"></ion-spinner>
+      </ion-label>
+      <ion-select interface="popover" [(ngModel)]="data.district" (ngModelChange)="districtChange($event)">
+        <ion-option value="">Select District...</ion-option>
+        <ion-option *ngFor="let district of districts" [value]="district.code">{{district.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label color="darkText" stacked>
+        Sector
+        <ion-spinner *ngIf="sector_loading" name="bubbles"></ion-spinner>
+      </ion-label>
+      <ion-select interface="popover" [(ngModel)]="data.sector" (ngModelChange)="sectorChange($event)">
+        <ion-option value="">Select Sector...</ion-option>
+        <ion-option *ngFor="let sector of sectors" [value]="sector.code">{{sector.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label color="darkText" stacked>
+        National ID
+      </ion-label>
+      <ion-input placeholder="Enter National ID..." type="number" clearInput [(ngModel)]="data.nid"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-input class="submit-input" type="text" (ionFocus)="openAccount()" *ngIf="data.fname.length > 0 && data.lname.length > 0 && data.dob.length > 0 && data.phone.length > 0 && data.province.length > 0 && data.district.length > 0 && data.sector.length > 0 && data.nid.length > 0"></ion-input>
+  <div class="form-action no-top-padding" *ngIf="data.fname.length > 0 && data.lname.length > 0 && data.dob.length > 0 && data.phone.length > 0 && data.province.length > 0 && data.district.length > 0 && data.sector.length > 0 && data.nid.length > 0">
+    <button ion-button icon-left block (tap)="openAccount()">
+      <ion-icon name="checkmark-circle"></ion-icon>
+      Open Account
+    </button>
+  </div>
+
+  <div class="loader-ret">{{ret}}</div>
+
+  <div class="loader-load" *ngIf="authenticating">
+    <ion-spinner name="bubbles"></ion-spinner>
+  </div>
+
+</ion-content>

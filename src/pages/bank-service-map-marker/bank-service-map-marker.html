@@ -1,0 +1,31 @@
+<!--
+  Generated template for the BankServiceMapMarkerPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content>
+
+  <ion-toolbar>
+    <ion-title>{{location.name}}</ion-title>
+  </ion-toolbar>
+
+  <table class="cc">
+    <tr>
+      <td>Name:</td>
+      <td>{{location.name}}</td>
+    </tr>
+    <tr *ngIf="location.contacts.length > 0">
+      <td>Contacts:</td>
+      <td>{{location.contacts}}</td>
+    </tr>
+    <tr *ngIf="location.openhours.length > 0">
+      <td>Open Hours:</td>
+      <td>{{location.openhours}}</td>
+    </tr>
+  </table>
+  <button ion-button icon-left full (tap)="openInMaps()">
+    <ion-icon name="navigate"></ion-icon>
+    Open In Maps
+  </button>
+</ion-content>

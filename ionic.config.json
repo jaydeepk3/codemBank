@@ -1,0 +1,7 @@
+{
+  "name": "cogebanque",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

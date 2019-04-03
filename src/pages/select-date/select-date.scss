@@ -1,0 +1,187 @@
+page-select-date {
+  ion-content {
+    background-color: rgba(color($colors, dark), 0.7) !important;
+    .back-drop {
+      display: block;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      z-index: 1;
+    }
+    .whole-calendar {
+      display: flex;
+      flex-direction: column;
+      height: 430px;
+      max-height: 430px;
+      width: 100%;
+      max-width: 100%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      background-color: color($colors, light);
+      z-index: 2;
+      ion-slides {
+        height: 290px !important;
+        .slide-zoom {
+          height: 290px !important;
+        }
+      }
+      .selected-day {
+        padding: 8px 16px;
+        background: rgba(color($colors, primary), 0.7);
+        color: color($colors, light);
+        font-size: 20px;
+        position: relative;
+        .cancel-btn {
+          position: absolute;
+          right: 0px;
+          top: 0;
+          bottom: 0;
+          margin: auto 16px auto 16px;
+        }
+      }
+      .selected-all {
+        padding: 8px 16px;
+        background: color($colors, primary);
+        color: color($colors, light);
+        text-align: center;
+        .selected-all-inner {
+          display: inline-block;
+          height: 80px;
+          width: 160px;
+          position: relative;
+          .selected-date {
+            display: block;
+            height: 80px;
+            width: 80px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            line-height: 80px;
+            text-align: right;
+            font-size: 68px;
+            font-weight: bold;
+          }
+          .selected-month {
+            display: block;
+            width: 80px;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            text-align: left;
+            font-size: 32px;
+            padding-top: 10px;
+            padding-left: 4px;
+            text-transform: capitalize;
+            font-weight: bold;
+          }
+          .selected-year {
+            display: block;
+            width: 80px;
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            text-align: left;
+            font-size: 27px;
+            padding-bottom: 10px;
+            padding-left: 4px;
+            text-transform: uppercase;
+          }
+        }
+      }
+      .the-calendar {
+        flex-grow: 1;
+        .cal {
+          .selected {
+            background: color($colors, primary);
+            color: color($colors, light);
+          }
+          .today {
+            border: solid 1px rgba(color($colors, dark), 0.3);
+          }
+          ul {
+            list-style: none;
+            padding: 0px;
+            margin: 0px;
+            text-align: left;
+            li {
+              display: inline-block;
+              width: 14%;
+              text-align: center;
+              height: 48px;
+              line-height: 48px;
+              span {
+                display: inline-block;
+                height: 40px;
+                width: 40px;
+                line-height: 40px;
+                border-radius: 50%;
+                transition: all 0.3s;
+              }
+            }
+          }
+          .dd {
+            border-bottom: solid 1px rgba(color($colors, dark), 0.3);
+            li {
+              font-size: 10px;
+              color: rgba(color($colors, dark), 0.3);
+              text-transform: uppercase;
+            }
+          }
+        }
+        .months {
+          text-align: center;
+          padding-top: 8px;
+          .month {
+            display: inline-block;
+            width: 33%;
+            padding: 8px 0px;
+            span {
+              display: inline-block;
+              height: 48px;
+              width: 48px;
+              line-height: 48px;
+              text-align: center;
+              border-radius: 24px;
+              transition: all 0.3s;
+            }
+          }
+          .selected {
+            span {
+              background: color($colors, primary);
+              color: color($colors, light);
+            }
+          }
+        }
+        .years {
+          .years-scroll {
+            display: block;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            overflow-y: auto;
+            position: relative;
+            .year {
+              span {
+                display: block;
+                height: 40px;
+                line-height: 40px;
+                font-size: 18px;
+                transition: all 0.3s;
+              }
+            }
+            .selected {
+              span {
+                background: color($colors, primary);
+                color: color($colors, light);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

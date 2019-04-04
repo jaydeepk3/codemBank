@@ -25,6 +25,8 @@ page-register,
 page-authenticate,
 page-change-password,
 page-start,
+page-new-to-the-app,
+page-open-wallet-account,
 page-exiting-customer {
   background-image: url('../assets/img/hq.jpg');
   background-position: center;
@@ -145,7 +147,7 @@ page-exiting-customer {
   padding: 16px;
   display: block;
   text-align: center;
-  background: white;
+//  background: white;
   margin: 16px 0px;
   color: color($colors, danger);
 }

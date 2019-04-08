@@ -117,4 +117,5 @@
         <variable name="SENDER_ID" value="262379723069" />
         <variable name="FCM_VERSION" value="11.0.1" />
     </plugin>
+    <plugin name="cordova-plugin-contacts" spec="^3.0.1" />
 </widget>

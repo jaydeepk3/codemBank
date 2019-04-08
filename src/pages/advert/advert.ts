@@ -20,6 +20,8 @@ export class AdvertPage {
   splase1: any;
   splase2: any;
   splase3: any;
+  splases:any = [];
+  splashImg:any=[];
   constructor(public navCtrl: NavController, public events: Events, public navParams: NavParams, public viewCtrl: ViewController, public api: ApiProvider) {
 
   }
@@ -47,9 +49,22 @@ export class AdvertPage {
             console.log(data___); //{"1":{"name":"1.jpg"},"2":{"name":"2.jpg"},"3":{"name":"3.jpg"}}
             let coge: any = JSON.parse(data___);
             console.log(coge[1].name);
-            this.splase1 = self.api.api().url+'sp/'+coge[1].name;
-            this.splase2 = self.api.api().url+'sp/'+coge[2].name;
-            this.splase3 = self.api.api().url+'sp/'+coge[3].name;
+            for(let val in coge)
+            {
+              if(val!="colourcode")
+              {
+                this.splase1=true;
+                this.splashImg.push({"name":self.api.api().url+'sp/'+coge[val].name});
+              }
+            }
+            // this.splase1 = self.api.api().url+'sp/'+coge[1].name;
+            // this.splase2 = self.api.api().url+'sp/'+coge[2].name;
+            // this.splase3 = self.api.api().url+'sp/'+coge[3].name;
+            //   for(let i=1;i<=coge.length;i++){
+            //     this.splases.push(self.api.api().url+'sp/'+coge[i].name)
+            //     console.log(this.splases)
+            //   }
+            //   console.log(this.splases)
           }).catch((err) => {
             this.ret = 'Unknown error!';
           });

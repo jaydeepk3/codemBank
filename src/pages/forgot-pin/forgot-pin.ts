@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
 import { ApiProvider } from './../../providers/api/api';
 import { AlertSuccessPage } from './../alert-success/alert-success';
+import { ChallengePage } from '../challenge/challenge';
 
 declare var cordova: any;
 /**
@@ -41,23 +42,16 @@ export class ForgotPinPage {
   	{
   		this.ret = '';
 	    this.forgotpin = true;
-
-	    let data = JSON.stringify(this.data);
+			console.log('this data',this.data)
+			let data = JSON.stringify(this.data);
+			console.log('data',data)
 	    cordova.plugins.aesEnc(data, this.api.api().key).then((data_) => {
-      	this.api.query(data_, null, 'walletopen', false).then(data__ => {
+				console.log('data_',data_)
+      	this.api.query(data_, null, 'forgotpin', false).then(data__ => {
+					console.log('data__',data__)
 	        this.forgotpin = false;
 	        let dt: any = data__;
-	        if (dt.kbankResponse.retcode === 0) {
-	          cordova.plugins.aesDec(dt.kbankResponse.reply, this.api.api().key).then((data___) => {
-
-	            let coge: any = JSON.parse(data___);
-	            this.showSuccess(coge);
-	          }).catch((err) => {
-	            this.ret = 'Unknown error!';
-	          });
-	        } else {
-	          this.ret = dt.kbankResponse.reply;
-	        }
+					this.navCtrl.push(ChallengePage);
 
 	      }).catch(error => {
 	        this.forgotpin = false;
@@ -71,12 +65,13 @@ export class ForgotPinPage {
 
   showSuccess(data: any) {
     this.successModal = this.modalCtrl.create(AlertSuccessPage, {
-      title: 'Otp Change Sucess',
-      message: data.transreturn
+      title: 'Message',
+      message: "Challenge Code Send Successfully"
     });
 
     this.successModal.onDidDismiss(data => {
-      this.hideModal();
+			this.hideModal();
+			this.navCtrl.push(ChallengePage);
     });
 
     setTimeout(() => {

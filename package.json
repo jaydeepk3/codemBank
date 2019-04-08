@@ -24,6 +24,7 @@
     "@ionic-native/app-version": "^4.5.3",
     "@ionic-native/barcode-scanner": "^4.1.0",
     "@ionic-native/base64": "^4.2.1",
+    "@ionic-native/contacts": "^5.3.0",
     "@ionic-native/core": "3.12.1",
     "@ionic-native/date-picker": "^4.5.2",
     "@ionic-native/geolocation": "^4.4.2",
@@ -43,6 +44,7 @@
     "cordova-plugin-app-version": "^0.1.9",
     "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-console": "^1.1.0",
+    "cordova-plugin-contacts": "^3.0.1",
     "cordova-plugin-datepicker": "^0.9.3",
     "cordova-plugin-device": "^1.1.7",
     "cordova-plugin-geolocation": "^2.4.3",
@@ -123,7 +125,8 @@
       "phonegap-plugin-push": {
         "SENDER_ID": "262379723069",
         "FCM_VERSION": "11.0.1"
-      }
+      },
+      "cordova-plugin-contacts": {}
     }
   }
 }

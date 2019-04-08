@@ -6,8 +6,10 @@
 -->
 <ion-content>
   <ion-slides loop="true" autoplay="3000" *ngIf="splase1">
-
-    <ion-slide  class="one" [style.backgroundImage]="'url('+splase1+')'">
+    <ion-slide  *ngFor="let sp of splashImg" class="one" [style.backgroundImage]="'url('+sp.name+')'">
+      &nbsp;
+    </ion-slide>
+    <!-- <ion-slide  class="one" [style.backgroundImage]="'url('+splase1+')'">
       &nbsp;
     </ion-slide>
 
@@ -17,7 +19,7 @@
 
     <ion-slide  class="one" [style.backgroundImage]="'url('+splase3+')'">
       &nbsp;
-    </ion-slide>
+    </ion-slide> -->
 
   </ion-slides>
 

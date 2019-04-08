@@ -4,6 +4,8 @@ import { Events, ModalController, NavController, NavParams } from 'ionic-angular
 import { ApiProvider } from './../../providers/api/api';
 import { UserProvider } from './../../providers/user/user';
 import { AlertSuccessPage } from './../alert-success/alert-success';
+import { InboxPage } from './../inbox/inbox';
+import { ClaimFromPage } from './../claim-from/claim-from';
 
 declare var cordova: any;
 
@@ -19,6 +21,8 @@ declare var cordova: any;
 })
 export class EInteractPage {
 
+  tab1: any = 'InboxPage';
+  tab2: any = 'ClaimFromPage';
   successModal;
 
   message: string = '';
@@ -37,6 +41,17 @@ export class EInteractPage {
 
   ionViewDidLoad() {
 
+  }
+  selectUtil(i)
+  {
+    switch (i) {
+      case 1:
+        this.navCtrl.push(InboxPage);
+         break;
+      case 2:
+        this.navCtrl.push(ClaimFromPage);
+         break;
+     }
   }
 
   sendMessage() {

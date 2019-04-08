@@ -60,6 +60,10 @@ import { DateProvider } from '../providers/date/date';
 import { Market } from '@ionic-native/market';
 import { ForceUpdateProvider } from '../providers/force-update/force-update';
 import { ForgotPinPage } from '../pages/forgot-pin/forgot-pin';
+import { ChallengePage } from '../pages/challenge/challenge';
+import { InboxPage } from '../pages/inbox/inbox';
+import { ClaimFromPage } from '../pages/claim-from/claim-from';
+import { SelectContactPage } from '../pages/select-contact/select-contact';
 @NgModule({
   declarations: [
     MyApp,
@@ -102,6 +106,10 @@ import { ForgotPinPage } from '../pages/forgot-pin/forgot-pin';
     SelectDatePage,
     AdvertPage,
     ForgotPinPage,
+    ChallengePage,
+    InboxPage,
+    ClaimFromPage,
+    SelectContactPage
   ],
   imports: [
     BrowserModule,
@@ -151,6 +159,10 @@ import { ForgotPinPage } from '../pages/forgot-pin/forgot-pin';
     SelectDatePage,
     AdvertPage,
     ForgotPinPage,
+    ChallengePage,
+    InboxPage,
+    ClaimFromPage,
+    SelectContactPage
   ],
   providers: [
     StatusBar,

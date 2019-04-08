@@ -64,6 +64,7 @@
         Beneficiary Name
       </ion-label>
       <ion-input placeholder="Enter Beneficiary Name..." type="text" clearInput [(ngModel)]="beneficial.name"></ion-input>
+      <ion-icon name="contacts" (tap)="selectContacts()" item-end style="float:right;font-size: 18px"></ion-icon>
     </ion-item>
     <ion-item *ngIf="service.banktype === 'B' || service.banktype === 'M' || service.banktype === 'O' || service.banktype === 'P'">
       <ion-label color="darkText" stacked>

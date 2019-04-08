@@ -63,7 +63,7 @@ export class ApiProvider {
 
         let json_ = '{"kbankRequest":{"' + (user === null ? 'method' : 'login') + '":"' + (user === null ? 'auth' : user.login) + '","ibintu":' + JSON.stringify(data) + '}}';
 
-        if (name === 'getprovinces' || name === 'getdistricts' || name === 'getsectors' || name === 'walletopen' || name === 'logout' || name === 'checksession' || name === 'splash') {
+        if (name === 'getprovinces' || name === 'getdistricts' || name === 'getsectors' || name === 'walletopen' || name === 'logout' || name === 'checksession' || name === 'splash' || name === 'forgotpin') {
           json_ = '{"kbankRequest":{"method":"' + name + '","ibintu":' + JSON.stringify(data) + '}}';
         }
 

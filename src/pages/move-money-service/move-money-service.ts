@@ -12,6 +12,7 @@ import { ApiProvider } from './../../providers/api/api';
 import { UserProvider } from './../../providers/user/user';
 import { Component } from '@angular/core';
 import { NavController, NavParams, Events, ModalController, ToastController } from 'ionic-angular';
+import { Contacts} from '@ionic-native/contacts';
 
 declare var cordova: any;
 
@@ -39,7 +40,7 @@ export class MoveMoneyServicePage {
   service: any;
   user: any;
   test: boolean = true;
-
+  contactList =[];
   sourceAccount: any = { account: '' };
   destinationAccount: any = { account: '' };
   amount = ''
@@ -56,7 +57,7 @@ export class MoveMoneyServicePage {
   error: boolean = false;
   ret: string = '';
 
-  constructor(public toastCtrl: ToastController, public events: Events, public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public userProvider: UserProvider, public api: ApiProvider) {
+  constructor(public toastCtrl: ToastController, public events: Events, public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public userProvider: UserProvider, public api: ApiProvider,public contacts: Contacts) {
     this.service = navParams.get('service');
 
     this.user = userProvider.getUser();
@@ -78,6 +79,19 @@ export class MoveMoneyServicePage {
     if (this.service.banktype === 'M') {
       this.beneficial.benphone = this.user.phone;
     }
+    this.contacts.find(
+      ["displayName", "phoneNumbers","photos"],
+      {multiple: true, hasPhoneNumber: true}
+      ).then((contacts) => {
+        for (var i=0 ; i < contacts.length; i++){
+          if(contacts[i].displayName !== null) {
+            var contact = {};
+            contact["name"]   = contacts[i].displayName;
+            contact["number"] = contacts[i].phoneNumbers[0].value;
+            this.contactList.push(contact);
+          }
+        }
+    });
   }
 
   fetchBens() {
@@ -379,6 +393,8 @@ export class MoveMoneyServicePage {
   logOut() {
     this.userProvider.logOut();
   }
-
+  selectContacts(){
+    this.contactList;
+  }
 
 }

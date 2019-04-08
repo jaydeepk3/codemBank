@@ -1,0 +1,44 @@
+<!--
+  Generated template for the ClaimFromPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content padding>
+	<ion-list>
+
+	    <ion-item (tap)="selectAccount(0)">
+	      <ion-input placeholder="Select Source Account..." type="text" disabled readonly="true" clearInput [(ngModel)]="data.account"></ion-input>
+	    </ion-item>
+	    <ion-item>
+	      <ion-select interface="popover" [(ngModel)]="data.channel" placeholder="Select channel..." class="full-width">
+	        <ion-option value="">Select channel</ion-option>
+	        <ion-option value="7">Card</ion-option>
+	        <ion-option value="8">Mobile banking</ion-option>
+	        <ion-option value="8">Internet banking</ion-option>
+	        <ion-option value="8">Mobile wallet</ion-option>
+	        <ion-option value="8">Other</ion-option> 
+	      </ion-select>
+	    </ion-item>
+	    <ion-item (tap)="selectDate()">
+	      <ion-input type="text" disabled readonly="true" clearInput [(ngModel)]="data.date" placeholder="Select Date..."> </ion-input>
+	    </ion-item>
+	    <ion-item>
+	      <ion-input placeholder="Enter Type Amount..." type="number" clearInput [(ngModel)]="data.amount" minlength="4" maxlength="4"></ion-input>
+	    </ion-item>
+	    <ion-item>
+	      <ion-input placeholder="Enter Description..." type="text" clearInput [(ngModel)]="data.description"></ion-input>
+	    </ion-item>
+	</ion-list>
+	<div class="form-action no-top-padding" *ngIf="data.channel.length > 0 && data.account.length > 0 && data.date.length > 0 && data.amount.length > 0 && data.amount.description > 0">
+	    <button ion-button icon-left block (tap)="claimSubmit()">
+	      Submit
+	    </button>
+	</div>
+	
+	<div class="loader-ret">{{ret}}</div>
+
+	<div class="loader-load" *ngIf="validataing">
+	    <ion-spinner name="bubbles"></ion-spinner>
+	</div>
+</ion-content>

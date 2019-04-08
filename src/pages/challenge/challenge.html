@@ -1,0 +1,28 @@
+<!--
+  Generated template for the ChallengePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content  >
+	<div class="vertical-center bank-background">
+		<ion-list >
+		    <ion-item>
+		      <ion-icon name="list" item-start></ion-icon>
+		      <ion-input placeholder="Enter Challenge Code..." type="number" clearInput [(ngModel)]="data.chacode"></ion-input>
+		    </ion-item>
+		    
+		</ion-list>
+		<div class="form-action no-top-padding" *ngIf="data.chacode.length === 6 && data.chacode.length > 0">
+		    <button ion-button icon-left block (tap)="ValidateCode()">
+		      Submit
+		    </button>
+		</div>
+		
+		<div class="loader-ret">{{ret}}</div>
+
+		<div class="loader-load" *ngIf="validatepin">
+		    <ion-spinner name="bubbles"></ion-spinner>
+		</div>
+	</div>
+</ion-content>

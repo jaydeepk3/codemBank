@@ -17,9 +17,20 @@
   </ion-navbar>
 
 </ion-header>
-
-
 <ion-content>
+  <ion-list class="accs">
+    <ion-item (tap)="selectUtil(1)">
+      <ion-icon name="chatboxes" item-start></ion-icon>
+      <h2>Inbox</h2>
+      <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+    </ion-item>
+    <ion-item (tap)="selectUtil(2)">
+      <ion-icon name="jet" item-start></ion-icon>
+      <h2>Claim</h2>
+      <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+    </ion-item>
+  </ion-list>
+<!-- <ion-content>
 
   <ion-list>
     <ion-item>
@@ -46,4 +57,4 @@
   </div>
   <div class="loader-ret">{{ret}}</div>
 
-</ion-content>
+</ion-content> -->

@@ -32,8 +32,7 @@
 	    </ion-item>
 	</ion-list>
 	<div class="form-action no-top-padding" *ngIf="data.phone.length > 0 && data.account.length > 0 && data.nid.length > 0 && data.card.length > 0 && data.amount.length > 0">
-	    <button ion-button icon-left block (tap)="forgotPin()">
-	      <ion-icon name="key"></ion-icon>
+	    <button ion-button round (tap)="forgotPin()">
 	      Submit
 	    </button>
 	</div>

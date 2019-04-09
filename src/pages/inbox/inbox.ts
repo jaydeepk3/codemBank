@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { UserProvider } from './../../providers/user/user';
 /**
  * Generated class for the InboxPage page.
  *
@@ -13,15 +13,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'inbox.html',
 })
 export class InboxPage {
+  data={message:''};
 
-	messages:any;
-	data={
-		message:''
-	}
-	hideTime = true;
-	alternate;
-	myId = '12345';
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  messages=[];
+
+  alternate:boolean=false;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public userProvider: UserProvider) {
   }
 
   ionViewDidLoad() {
@@ -30,10 +28,22 @@ export class InboxPage {
 
   sendMessage()
   {
-  	 this.alternate = !this.alternate;
-  	this.messages.push({
-      userId: this.alternate ? '12345' : '54321',
-      text: this.data.message
-    });
+    let userID=54321;
+    this.alternate =!this.alternate;
+    if(this.data.message.length > 0)
+    {
+      if(this.alternate)
+      {
+        userID=12345;
+      }
+      let val={"userID":userID,"text":this.data.message};
+      this.messages.push(val);
+       this.data.message='';
+    }
+    this.data.message='';
+  }
+
+  logOut() {
+    this.userProvider.logOut();
   }
 }

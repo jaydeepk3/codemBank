@@ -95,6 +95,11 @@ export class MyApp {
       appVersion.getAppName().then(name => {
         this.appName = name;
       });
+      let self= this;
+      cordova.plugins.IMEI(function (err, imei) {
+        console.log('imeiNumber', imei);
+        self.storage.set('imeiNumber', imei);
+      });
 
       // cordova.plugins.notification.local.on('click', function (notification) {
       //   alert(notification.data.urugi);
@@ -111,11 +116,15 @@ export class MyApp {
             } catch (exc) { }
             if (app.getActiveNav().getActive().component == Authenticate) {
               platform.exitApp();
+                    setTimeout(() => {
+                      this.userProvider.logOut();
+                  }, 3000);
             } else {
               if (this.currentTabIndex > 0) {
                 app.getActiveNav().getActive().getNav().parent.select(0);
               } else {
                 this.exitAlert.present();
+             
               }
             }
           }
@@ -205,9 +214,9 @@ export class MyApp {
           //   });
           //   youralert.present();
 
-          //   setTimeout(() => {
-          //     this.platform.exitApp();
-          //   }, 4000);
+            // setTimeout(() => {
+            //   this.platform.exitApp();
+            // }, 4000);
           // }
         }, 1000);
       }

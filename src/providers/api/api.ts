@@ -4,7 +4,9 @@ import 'rxjs/add/operator/map';
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
-
+import { Uid } from '@ionic-native/uid/ngx';
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+import { Device } from '@ionic-native/device/ngx';
 
 /*
   Generated class for the ApiProvider provider.
@@ -28,6 +30,7 @@ export class ApiProvider {
       iv: '2aadf6440fa96846'
     };
   };
+  IMEI: string;
 
   public setTest(isTest_: boolean) {
     this.isTest = isTest_;
@@ -36,17 +39,51 @@ export class ApiProvider {
   private data_: any;
   private kAuth: string;
 
-  constructor(public http: Http, private storage: Storage, private appVersion: AppVersion) {
-
+  constructor(public http: Http,
+    private storage: Storage,
+    private uid: Uid,
+    private androidPermissions: AndroidPermissions,
+    private device: Device,
+    private appVersion: AppVersion) {
+   // this.getImei();
+  //  console.log('Device UUID is: ' + this.device.uuid);
   }
 
   getLink() {
     return this.api().url;
   }
 
+  // getImei(): Promise<boolean> {
+  //   return new Promise(resolve => {
+
+  //     console.log('android')
+  //     this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.READ_PHONE_STATE).then(authorised => {
+  //       console.log(authorised)
+  //       if (authorised) {
+  //         console.log('if')
+  //         resolve(true);
+  //       }
+  //       else {
+  //         console.log('else')
+  //         this.androidPermissions.requestPermission(
+  //           this.androidPermissions.PERMISSION.READ_PHONE_STATE
+  //         ).then(authorisation => {
+  //           console.log('authorisation')
+  //           console.log(authorisation);
+  //          // console.log(this.uid.IMEI);
+  //           // this.IMEI = this.uid.IMEI;
+  //         }, err => {
+  //           console.log(err);
+  //         });
+  //       }
+  //     });
+
+  //   });
+  // }
+
+
+
   query(data: string, user: any, name: string, cache: boolean) {
-
-
     return new Promise(resolve => {
       this.storage.get('registrationId').then((val) => {
         this.kAuth = val;
@@ -59,16 +96,20 @@ export class ApiProvider {
         });
         console.log('K-Auth', this.kAuth)
         headers.append('K-Auth', this.kAuth);
+        this.storage.get('imeiNumber').then((imeiNumber) => {
+          headers.append('devid', imeiNumber);
+       });
+        //  headers.append('Devid', cordova.plugin.uid.IMEI);
         headers.append('Content-Type', 'application/json');
-
+        console.log(headers)
         let json_ = '{"kbankRequest":{"' + (user === null ? 'method' : 'login') + '":"' + (user === null ? 'auth' : user.login) + '","ibintu":' + JSON.stringify(data) + '}}';
 
-        if (name === 'getprovinces' || name === 'getdistricts' || name === 'getsectors' || name === 'walletopen' || name === 'logout' || name === 'checksession' || name === 'splash' || name === 'forgotpin') {
+        if (name === 'getprovinces' || name === 'getdistricts' || name === 'getsectors' || name === 'walletopen' || name === 'logout' || name === 'checksession' || name === 'splash' || name === 'forgotpin' || name === 'challenge') {
           json_ = '{"kbankRequest":{"method":"' + name + '","ibintu":' + JSON.stringify(data) + '}}';
         }
 
         let json = JSON.parse(json_);
-
+        console.log(json)
         this.storage.get(name).then((val) => {
           let v = val;
 
@@ -94,7 +135,7 @@ export class ApiProvider {
               }, error => {
                 this.data_ = null;
                 resolve(null);
-              //  alert(error.message);
+                //  alert(error.message);
                 console.error(error);
                 console.log(error.message);
                 console.log(error);
@@ -110,7 +151,7 @@ export class ApiProvider {
   data() {
     return this.data_;
   }
- 
- 
+
+
 
 }

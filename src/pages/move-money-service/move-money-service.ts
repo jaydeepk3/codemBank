@@ -5,13 +5,14 @@ import { SelectBankPage } from './../select-bank/select-bank';
 import { SelectBeneficialPage } from './../select-beneficial/select-beneficial';
 import { MoveMoneyConfirmPage } from './../move-money-confirm/move-money-confirm';
 import { AlertSuccessPage } from './../alert-success/alert-success';
+import { SelectContactPage } from './../select-contact/select-contact';
 import { BankServiceVerifyPage } from './../bank-service-verify/bank-service-verify';
 import { SelectBranchPage } from './../select-branch/select-branch';
 import { SelectAccount } from './../select-account/select-account';
 import { ApiProvider } from './../../providers/api/api';
 import { UserProvider } from './../../providers/user/user';
 import { Component } from '@angular/core';
-import { NavController, NavParams, Events, ModalController, ToastController } from 'ionic-angular';
+import { NavController, NavParams, Events, ModalController, ToastController,AlertController } from 'ionic-angular';
 import { Contacts} from '@ionic-native/contacts';
 
 declare var cordova: any;
@@ -40,7 +41,9 @@ export class MoveMoneyServicePage {
   service: any;
   user: any;
   test: boolean = true;
+
   contactList =[];
+
   sourceAccount: any = { account: '' };
   destinationAccount: any = { account: '' };
   amount = ''
@@ -57,7 +60,7 @@ export class MoveMoneyServicePage {
   error: boolean = false;
   ret: string = '';
 
-  constructor(public toastCtrl: ToastController, public events: Events, public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public userProvider: UserProvider, public api: ApiProvider,public contacts: Contacts) {
+  constructor(public alertCtrl:AlertController,public toastCtrl: ToastController, public events: Events, public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public userProvider: UserProvider, public api: ApiProvider,public contacts: Contacts) {
     this.service = navParams.get('service');
 
     this.user = userProvider.getUser();
@@ -79,19 +82,20 @@ export class MoveMoneyServicePage {
     if (this.service.banktype === 'M') {
       this.beneficial.benphone = this.user.phone;
     }
-    this.contacts.find(
-      ["displayName", "phoneNumbers","photos"],
-      {multiple: true, hasPhoneNumber: true}
-      ).then((contacts) => {
-        for (var i=0 ; i < contacts.length; i++){
-          if(contacts[i].displayName !== null) {
-            var contact = {};
-            contact["name"]   = contacts[i].displayName;
-            contact["number"] = contacts[i].phoneNumbers[0].value;
-            this.contactList.push(contact);
+
+      this.contacts.find(
+        ["displayName", "phoneNumbers","photos"],
+        {multiple: true, hasPhoneNumber: true}
+        ).then((contacts) => {
+          for (var i=0 ; i < contacts.length; i++){
+            if(contacts[i].displayName !== null) {
+              var contact = {};
+              contact["name"]   = contacts[i].displayName;
+              contact["number"] = contacts[i].phoneNumbers[0].value;
+              this.contactList.push(contact);
+            }
           }
-        }
-    });
+      });
   }
 
   fetchBens() {
@@ -394,7 +398,30 @@ export class MoveMoneyServicePage {
     this.userProvider.logOut();
   }
   selectContacts(){
-    this.contactList;
-  }
+    this.contacts.pickContact().then((res)=>{
+      console.log(res);
+      this.beneficial.name=res.displayName;
+      if(res.phoneNumbers.length>=2)
+      {
+        this.successModal = this.modalCtrl.create(SelectContactPage, {
+          data:res.phoneNumbers});
 
+        this.successModal.onDidDismiss(data => {
+          if(data!=null)
+          {
+            this.beneficial.benphone=data.phoneNo;
+          }
+        });
+
+        setTimeout(() => {
+          this.successModal.present();
+        }, 300);
+      }
+      else{
+          this.beneficial.benphone=res.phoneNumbers[0].value;
+      }
+    },(err)=>{
+      console.log(err);
+    });
+  }
 }

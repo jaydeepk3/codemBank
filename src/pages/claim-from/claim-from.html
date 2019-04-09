@@ -4,34 +4,51 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-content padding>
+<ion-header>
+
+  <ion-navbar>
+    <ion-title class="title-icon">{{test ? 'Test -' : ''}} Claim Form</ion-title>
+    <ion-buttons end>
+      <button ion-button class="my-rounded-b" round outline icon-end color="danger" (click)="logOut()">
+        Log Out
+        <ion-icon name="lock"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+<ion-content>
 	<ion-list>
 
 	    <ion-item (tap)="selectAccount(0)">
+	    	<ion-icon class="formicon" name="list" item-start></ion-icon>
 	      <ion-input placeholder="Select Source Account..." type="text" disabled readonly="true" clearInput [(ngModel)]="data.account"></ion-input>
 	    </ion-item>
 	    <ion-item>
-	      <ion-select interface="popover" [(ngModel)]="data.channel" placeholder="Select channel..." class="full-width">
-	        <ion-option value="">Select channel</ion-option>
-	        <ion-option value="7">Card</ion-option>
-	        <ion-option value="8">Mobile banking</ion-option>
-	        <ion-option value="8">Internet banking</ion-option>
-	        <ion-option value="8">Mobile wallet</ion-option>
-	        <ion-option value="8">Other</ion-option> 
-	      </ion-select>
+	    	<ion-icon class="formicon" name="podium" item-start></ion-icon>
+		    <ion-select interface="popover" [(ngModel)]="data.channel" placeholder="Select Channel..." class="full-width">
+		        <ion-option value="1">Card</ion-option>
+		        <ion-option value="2">Mobile Banking</ion-option>
+		        <ion-option value="3">Internet Banking</ion-option>
+		        <ion-option value="4">Mobile Wallet</ion-option>
+		        <ion-option value="5">Other</ion-option>
+		    </ion-select>
 	    </ion-item>
 	    <ion-item (tap)="selectDate()">
-	      <ion-input type="text" disabled readonly="true" clearInput [(ngModel)]="data.date" placeholder="Select Date..."> </ion-input>
+	    	<ion-icon class="formicon" name="calendar" item-start></ion-icon>
+	      <ion-input type="text" clearInput [(ngModel)]="data.claimDate" placeholder="Select Date..."> </ion-input>
 	    </ion-item>
 	    <ion-item>
-	      <ion-input placeholder="Enter Type Amount..." type="number" clearInput [(ngModel)]="data.amount" minlength="4" maxlength="4"></ion-input>
+	    	<ion-icon class="formicon" name="paw" item-start></ion-icon>
+	      <ion-input placeholder="Enter Type Amount..." type="number" clearInput [(ngModel)]="data.amount"></ion-input>
 	    </ion-item>
 	    <ion-item>
-	      <ion-input placeholder="Enter Description..." type="text" clearInput [(ngModel)]="data.description"></ion-input>
+	    	<ion-icon class="formicon" name="text" item-start></ion-icon>
+	      <ion-input placeholder="Enter Description..." type="text" clearInput [(ngModel)]="data.description" multiple></ion-input>
 	    </ion-item>
 	</ion-list>
-	<div class="form-action no-top-padding" *ngIf="data.channel.length > 0 && data.account.length > 0 && data.date.length > 0 && data.amount.length > 0 && data.amount.description > 0">
-	    <button ion-button icon-left block (tap)="claimSubmit()">
+	<div class="form-action no-top-padding">
+	    <button ion-button block (tap)="claimSubmit()">
 	      Submit
 	    </button>
 	</div>

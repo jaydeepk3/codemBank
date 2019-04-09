@@ -1,10 +1,10 @@
+import { DateProvider } from './../../providers/date/date';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ModalController,AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,ModalController,AlertController,LoadingController } from 'ionic-angular';
 import { SelectAccount } from './../select-account/select-account';
 import { AlertSuccessPage } from './../alert-success/alert-success';
 import { ApiProvider } from './../../providers/api/api';
 import { UserProvider } from './../../providers/user/user';
-import { DateProvider } from './../../providers/date/date';
 
 declare var cordova: any;
 /**
@@ -26,16 +26,27 @@ export class ClaimFromPage {
 	data: any = {
 	    account: '',
 	    channel: '',
-	    date: '',
+	    claimDate: '',
 	    amount: '',
 	    description: '',
 	  };
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public userProvider: UserProvider, public api: ApiProvider,public date: DateProvider,public alertCtrl: AlertController) {
+
+	validataing:boolean=false;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public userProvider: UserProvider, public api: ApiProvider,public date: DateProvider,public alertCtrl: AlertController,public loadingCtrl: LoadingController) {
   	this.user = userProvider.getUser();
 	this.test = api.isTest;
   }
 
   ionViewDidLoad() {
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+
+    loading.present();
+
+    setTimeout(() => {
+      loading.dismiss();
+    }, 7000);
     console.log('ionViewDidLoad ClaimFromPage');
   }
   claimSubmit()
@@ -44,16 +55,36 @@ export class ClaimFromPage {
             title: 'Enter Pin',
             inputs: [{
                 name: 'pin',
-                placeholder:"Enter Pin..."
+                placeholder:"Enter Pin...",
+                type:"number"
             }],
             buttons: [
                 {
-                    text: 'Cancel'
+                    text: 'Cancel',
+                    handler: () => {
+                      this.data.account='';
+                      this.data.channel='';
+                      this.data.claimDate='';
+                      this.data.amount='';
+                      this.data.description='';
+                    }
                 },
                 {
                     text: 'Submit',
                     handler: data => {
+                      this.data.account='';
+                      this.data.channel='';
+                      this.data.claimDate='';
+                      this.data.amount='';
+                      this.data.description='';
 
+                        this.successModal = this.modalCtrl.create(AlertSuccessPage, {
+                          title: 'Claim',
+                          message: "Claim Successfully Submited"
+                        });
+                        setTimeout(() => {
+                          this.successModal.present();
+                        }, 300);
                     }
                 }
             ]
@@ -77,10 +108,13 @@ export class ClaimFromPage {
   }
 
   selectDate() {
-    this.date.show(this.data.dob).then(date => {
+    this.date.show(this.data.claimDate).then(date => {
       if (date !== null) {
-        this.data.date = date;
+        this.data.claimDate = date;
       }
     });
+  }
+  logOut() {
+    this.userProvider.logOut();
   }
 }

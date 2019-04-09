@@ -89,7 +89,6 @@ export class UtilityVerifyPage {
         if (dt.kbankResponse.retcode === 0) {
           cordova.plugins.aesDec(dt.kbankResponse.reply, self.user.rkey).then((data___) => {
             let ab: any = JSON.parse(data___);
-
             if (ab.utilcheck.retdata.status === '0') {
               self.res = ab.utilcheck.retdata;
               self.success = true;

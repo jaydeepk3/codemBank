@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
 import { ApiProvider } from './../../providers/api/api';
 import { AlertSuccessPage } from './../alert-success/alert-success';
-import { ChallengePage } from '../challenge/challenge';
+import { ChallengePage } from './../challenge/challenge';
+import { SMS } from '@ionic-native/sms';
 
 declare var cordova: any;
 /**
@@ -18,18 +19,20 @@ declare var cordova: any;
 })
 export class ForgotPinPage {
 	successModal;
+  private key: string = '2aadf6440fa96846';
 
 	data: any = {
 	    phone: '',
-	    accountnumber: '',
+	    account: '',
 	    nid: '',
-	    cardno: '',
-	    lstamount: '',
+	    card: '',
+	    amount: '',
 	  };
 
   forgotpin = false;
 
   ret: string;
+  dt: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public api: ApiProvider, public modalCtrl: ModalController, public viewCtrl: ViewController) {
   }
@@ -42,17 +45,31 @@ export class ForgotPinPage {
   	{
   		this.ret = '';
 	    this.forgotpin = true;
-			console.log('this data',this.data)
-			let data = JSON.stringify(this.data);
-			console.log('data',data)
-	    cordova.plugins.aesEnc(data, this.api.api().key).then((data_) => {
-				console.log('data_',data_)
-      	this.api.query(data_, null, 'forgotpin', false).then(data__ => {
-					console.log('data__',data__)
-	        this.forgotpin = false;
-	        let dt: any = data__;
-					this.navCtrl.push(ChallengePage);
+	    this.data.method="forgotpin";
 
+	    let data = JSON.stringify(this.data);
+	    
+	    cordova.plugins.aesEnc(data, this.api.api().key).then((data_) => {
+      	this.api.query(data_, null, 'forgotpin', false).then(data__ => {
+	        this.forgotpin = false;
+          // this.dt = JSON.stringify(data__);
+	        this.dt = data__;
+          if (this.dt.kbankResponse.retcode === 0) {
+            cordova.plugins.aesDec(this.dt.kbankResponse.reply, this.key).then((data___) => {
+              let coge: any = JSON.parse(data___);
+						console.log(coge);
+						console.log(coge['transreturn'].phone,'Your charcode is here '+coge['transreturn'].chacode);
+            // this.sms.send(coge['transreturn'].phone,'Your charcode is here '+coge['transreturn'].chacode).then(data=>console.log('SMS sent'), err=>{
+						// 	console.log(err)
+						// })
+							this.navCtrl.push(ChallengePage,{forgotData:coge['transreturn']});
+            }).catch((err) => {
+              this.ret = 'Unknown error!';
+            });
+          }
+          else{
+            this.ret = this.dt.kbankResponse.reply;
+          }
 	      }).catch(error => {
 	        this.forgotpin = false;
 	        this.ret = 'An error occurred!';
@@ -70,8 +87,8 @@ export class ForgotPinPage {
     });
 
     this.successModal.onDidDismiss(data => {
-			this.hideModal();
-			this.navCtrl.push(ChallengePage);
+      	this.hideModal();
+    	this.navCtrl.push(ChallengePage);
     });
 
     setTimeout(() => {

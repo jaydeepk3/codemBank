@@ -3,9 +3,9 @@ import { AdvertPage } from './../advert/advert';
 import { NewToTheAppPage } from './../new-to-the-app/new-to-the-app';
 import { OpenWalletAccountPage } from './../open-wallet-account/open-wallet-account';
 import { ApiProvider } from './../../providers/api/api';
-import { Component, NgZone,ViewChild,ElementRef } from '@angular/core';
+import { Component, NgZone, ViewChild, ElementRef } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { Events, NavController, NavParams, ViewController, ModalController,AlertController } from 'ionic-angular';
+import { Events, NavController, NavParams, ViewController, ModalController, AlertController } from 'ionic-angular';
 import { ForgotPinPage } from './../forgot-pin/forgot-pin';
 declare var cordova: any;
 
@@ -40,14 +40,14 @@ export class Authenticate {
   cunt = 1;
 
   fetching: boolean = false;
-  constructor(private zone: NgZone, public storage: Storage, public events: Events, public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public viewCtrl: ViewController, public api: ApiProvider, public userProvider: UserProvider,public alertCtrl: AlertController) {
+  constructor(private zone: NgZone, public storage: Storage, public events: Events, public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public viewCtrl: ViewController, public api: ApiProvider, public userProvider: UserProvider, public alertCtrl: AlertController) {
     this.test = api.isTest;
     storage.get('user_login').then(userStr => {
       if (userStr !== null) {
         this.user = JSON.parse(userStr);
       }
     });
-  //  this.getSplashImg();
+    //  this.getSplashImg();
   }
 
   ionViewDidLoad() {
@@ -93,38 +93,41 @@ export class Authenticate {
 
   authenticate() {
     this.authenticating = true;
-    let data = JSON.stringify({ "pass": btoa(this.pass), "login": this.login });
+    let data = JSON.stringify({ "pass": btoa(this.pass), "login": this.login, 'method': 'login' });
     console.log(data);
     console.log(this.key);
-    cordova.plugins.aesEnc(data, this.key).then((data_) => {
-      this.api.query(data_, null, 'login', false).then(data__ => {
+  //  this.api.getImei().then(imei => {
+  //    console.log(imei)
+      cordova.plugins.aesEnc(data, this.key).then((data_) => {
+        this.api.query(data_, null, 'login', false).then(data__ => {
+          this.authenticating = false;
+          let dt: any = data__;
+          if (dt.kbankResponse.retcode === 0) {
+            cordova.plugins.aesDec(dt.kbankResponse.reply, this.key).then((data___) => {
+
+              let coge: any = JSON.parse(data___);
+
+              coge.signedIn = true;
+
+              this.events.publish('user:auth', coge, Date.now());
+
+              this.navCtrl.popToRoot();
+            }).catch((err) => {
+              this.ret = 'Unknown error!';
+            });
+          } else {
+            this.ret = dt.kbankResponse.reply;
+          }
+
+        }).catch(error => {
+          this.authenticating = false;
+          this.ret = 'An error occurred!';
+        });
+      }).catch((err) => {
         this.authenticating = false;
-        let dt: any = data__;
-        if (dt.kbankResponse.retcode === 0) {
-          cordova.plugins.aesDec(dt.kbankResponse.reply, this.key).then((data___) => {
-
-            let coge: any = JSON.parse(data___);
-
-            coge.signedIn = true;
-
-            this.events.publish('user:auth', coge, Date.now());
-
-            this.navCtrl.popToRoot();
-          }).catch((err) => {
-            this.ret = 'Unknown error!';
-          });
-        } else {
-          this.ret = dt.kbankResponse.reply;
-        }
-
-      }).catch(error => {
-        this.authenticating = false;
-        this.ret = 'An error occurred!';
-      });
-    }).catch((err) => {
-      this.authenticating = false;
-      this.ret = 'Unknown error!';
-    });
+        this.ret = 'Unknown error!';
+    //  });
+  })
   }
 
   showRegister() {
@@ -140,8 +143,7 @@ export class Authenticate {
   register() {
     this.navCtrl.push(NewToTheAppPage);
   }
-  forgotPin()
-  {
+  forgotPin() {
     this.navCtrl.push(ForgotPinPage);
   }
 }

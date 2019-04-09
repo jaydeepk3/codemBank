@@ -40,7 +40,7 @@ export class UtilityPage {
   numberType: string = 'other';
 
   creditaccount: string = '';
-  amount: number;
+  amount: number = 0;
   saveBenef: boolean = false;
   benefName: string = '';
   benPhone: string = '';

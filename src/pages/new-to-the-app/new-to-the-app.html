@@ -13,25 +13,25 @@
 </ion-header>
 
 
-<ion-content >
+<ion-content>
 
   <ion-list class="bank-background">
 
     <ion-item>
       <ion-icon class="formicon" name="person" item-start></ion-icon>
-      <ion-input class="input-class" placeholder="Enter First Name..." type="text" clearInput [(ngModel)]="data.fname"></ion-input>
+      <ion-input placeholder="Enter First Name..." type="text" clearInput [(ngModel)]="data.fname"></ion-input>
     </ion-item>
     <ion-item>
       <ion-icon class="formicon" name="person" item-start></ion-icon>
-      <ion-input class="input-class" placeholder="Enter Last Name..." type="text" clearInput [(ngModel)]="data.lname"></ion-input>
+      <ion-input placeholder="Enter Last Name..." type="text" clearInput [(ngModel)]="data.lname"></ion-input>
     </ion-item>
     <ion-item>
       <ion-icon class="formicon" name="apps" item-start></ion-icon>
-      <ion-input class="input-class" placeholder="Enter Account Number..." type="tel" clearInput [(ngModel)]="data.accountnumber"></ion-input>
+      <ion-input placeholder="Enter Account Number..." type="tel" clearInput [(ngModel)]="data.accountnumber"></ion-input>
     </ion-item>
     <ion-item>
       <ion-icon name="transgender" item-start></ion-icon>
-      <ion-select class="input-class" interface="popover" [(ngModel)]="data.gender" placeholder="Select Gender...">
+      <ion-select interface="popover" [(ngModel)]="data.gender" placeholder="Select Gender..." class="full-width">
         <!-- <ion-option value="">Select Gender...</ion-option> -->
         <ion-option value="7">Female</ion-option>
         <ion-option value="8">Male</ion-option>
@@ -39,7 +39,7 @@
     </ion-item>
     <ion-item (tap)="selectDate()">
       <ion-icon class="formicon" name="calendar" item-start></ion-icon>
-      <ion-input class="input-class" placeholder="Select Date Of Birth..." type="text" disabled readonly="true" clearInput [(ngModel)]="data.dob"></ion-input>
+      <ion-input placeholder="Select Date Of Birth..." type="text" disabled readonly="true" clearInput [(ngModel)]="data.dob"></ion-input>
     </ion-item>
     <!--<ion-item>
       <ion-label color="darkText" stacked>
@@ -49,15 +49,15 @@
     </ion-item>-->
     <ion-item>
        <ion-icon class="formicon" name="call" item-start></ion-icon>
-      <ion-input class="input-class" placeholder="Enter Phone..." type="tel" clearInput [(ngModel)]="data.phone"></ion-input>
+      <ion-input placeholder="Enter Phone..." type="tel" clearInput [(ngModel)]="data.phone"></ion-input>
     </ion-item>
     <ion-item>
       <ion-icon class="formicon" name="mail" item-start></ion-icon>
-      <ion-input class="input-class" placeholder="Enter Email..." type="email" clearInput [(ngModel)]="data.email"></ion-input>
+      <ion-input placeholder="Enter Email..." type="email" clearInput [(ngModel)]="data.email"></ion-input>
     </ion-item>
     <ion-item>
       <ion-icon class="formicon" name="list" item-start></ion-icon>
-      <ion-input class="input-class" placeholder="Enter National ID..." type="number" clearInput [(ngModel)]="data.nid"></ion-input>
+      <ion-input placeholder="Enter National ID..." type="number" clearInput [(ngModel)]="data.nid"></ion-input>
     </ion-item>
     <!--<ion-item>
       <ion-label color="darkText" stacked>

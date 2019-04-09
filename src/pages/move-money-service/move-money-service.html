@@ -63,8 +63,8 @@
       <ion-label color="darkText" stacked>
         Beneficiary Name
       </ion-label>
-      <ion-input placeholder="Enter Beneficiary Name..." type="text" clearInput [(ngModel)]="beneficial.name"></ion-input>
-      <ion-icon name="contacts" (tap)="selectContacts()" item-end style="float:right;font-size: 18px"></ion-icon>
+      <ion-input placeholder="Enter Beneficiary Name..." type="text" clearInput [(ngModel)]="beneficial.name" style="width:80%;"></ion-input>
+      <ion-icon name="contacts" (tap)="selectContacts()" item-end style="float:right;font-size: 24px"></ion-icon>
     </ion-item>
     <ion-item *ngIf="service.banktype === 'B' || service.banktype === 'M' || service.banktype === 'O' || service.banktype === 'P'">
       <ion-label color="darkText" stacked>
@@ -145,5 +145,5 @@
   <div class="loader-load" *ngIf="fetching">
     <ion-spinner name="bubbles"></ion-spinner>
   </div>
-  <div class="loader-ret">{{ret}}</div>
+  <div class="loader-ret">{{ret}}{{contactList}}</div>
 </ion-content>

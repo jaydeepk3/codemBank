@@ -64,6 +64,11 @@ import { ChallengePage } from '../pages/challenge/challenge';
 import { InboxPage } from '../pages/inbox/inbox';
 import { ClaimFromPage } from '../pages/claim-from/claim-from';
 import { SelectContactPage } from '../pages/select-contact/select-contact';
+import { SMS } from '@ionic-native/sms/ngx';
+import { Uid } from '@ionic-native/uid/ngx';
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+import { Device } from '@ionic-native/device/ngx';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -181,6 +186,10 @@ import { SelectContactPage } from '../pages/select-contact/select-contact';
     DatePicker,
     DateProvider,
     Market,
+    SMS,
+    Uid,
+    Device,
+    AndroidPermissions,
     ForceUpdateProvider
   ]
 })

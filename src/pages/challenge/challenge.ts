@@ -25,16 +25,20 @@ export class ChallengePage {
 	successModal;
 
 	data: any = {
-	    chacode: ''
+      chacode: '',
+      method:'challenge'
 	  };
 
   validatepin = false;
 
   ret: string;
+  forgotData: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
   	public api: ApiProvider,public modalCtrl: ModalController) {
-  }
+      this.forgotData = navParams.get('forgotData');
+      console.log(this.forgotData)
+    }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChallengePage');
@@ -42,16 +46,23 @@ export class ChallengePage {
 
   ValidateCode()
   	{
+      
   		this.ret = '';
-	    this.validatepin = true;
-      this.data.method="challenge";
-      this.data.login="kaneza123";
-	    let data = JSON.stringify(this.data);
+      this.validatepin = true;
+      console.log('forgotData',this.forgotData);
+      //this.data.method='challenge';
+      this.data.login=this.forgotData.login;
+    //  this.data.chacode = this.forgotData.chacode;
+      console.log(this.data);
+      let data = JSON.stringify(this.data);
+      console.log(data);
 	    cordova.plugins.aesEnc(data, this.api.api().key).then((data_) => {
       	this.api.query(data_, null, 'challenge', false).then(data__ => {
 	        this.validatepin = false;
-	        let dt: any = data__;
+          let dt: any = data__;
+          console.log(dt)
           this.navCtrl.popToRoot();
+        
 	      }).catch(error => {
 	        this.validatepin = false;
 	        this.ret = 'An error occurred!';

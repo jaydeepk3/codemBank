@@ -14,6 +14,7 @@ import { Authenticate } from '../pages/authenticate/authenticate';
 import { ChangePassword } from './../pages/change-password/change-password';
 import { Client } from './../pages/client/client';
 import { UserProvider } from './../providers/user/user';
+ import {Idle} from '@ng-idle/core';
 
 declare var cordova: any;
 
@@ -45,7 +46,9 @@ export class MyApp {
   isTest = false;
 
   exitAlert;
-
+  idleState = 'Not started.';
+  timedOut = false;
+  lastPing?: Date = null;
   constructor(private zone: NgZone,
     private platform: Platform,
     private app: App,
@@ -58,8 +61,10 @@ export class MyApp {
     public alertCtrl: AlertController,
     public storage: Storage,
     public userProvider: UserProvider,
+    private idle: Idle, 
     public api: ApiProvider) {
-
+      this.idle.onIdleStart.subscribe(() => this.idleState = 'You\'ve gone idle!');
+      this.idle.setIdle(3);
     try {
       api.setTest(this.isTest);
     } catch (exce) { }
@@ -77,7 +82,9 @@ export class MyApp {
         {
           text: 'Exit App',
           handler: () => {
-            platform.exitApp();
+            // this.userProvider.logOut();
+            this.events.publish('user:auth', null, Date.now());
+              platform.exitApp();
           }
         }
       ]
@@ -85,7 +92,7 @@ export class MyApp {
 
     platform.ready().then(() => {
       api.setTest(this.isTest);
-
+     
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
@@ -95,7 +102,7 @@ export class MyApp {
       appVersion.getAppName().then(name => {
         this.appName = name;
       });
-      let self= this;
+      let self = this;
       cordova.plugins.IMEI(function (err, imei) {
         console.log('imeiNumber', imei);
         self.storage.set('imeiNumber', imei);
@@ -115,16 +122,13 @@ export class MyApp {
               app.getActiveNav().pop();
             } catch (exc) { }
             if (app.getActiveNav().getActive().component == Authenticate) {
+              this.events.publish('user:auth', null, Date.now());
               platform.exitApp();
-                    setTimeout(() => {
-                      this.userProvider.logOut();
-                  }, 3000);
             } else {
               if (this.currentTabIndex > 0) {
                 app.getActiveNav().getActive().getNav().parent.select(0);
               } else {
                 this.exitAlert.present();
-             
               }
             }
           }
@@ -137,11 +141,15 @@ export class MyApp {
       });
 
       events.subscribe('user:auth', (user, time) => {
+       
         this.userProvider.setUser(user);
-
+        console.log('user', user);
         if (user !== null && user.hasOwnProperty('signedIn') && user.signedIn === true) {
           try {
             this.rootPage = user.passexpired === 'N' ? Client : ChangePassword;
+            // setInterval(() => {
+            //   this.userProvider.logOut();
+            // }, user.sesstime);
           } catch (exce) {
           }
 
@@ -162,24 +170,37 @@ export class MyApp {
             }
           });
         }
+       
       });
 
       setTimeout(() => {
         this.pushInit();
       }, 1000);
+
+      this.platform.pause.subscribe((result) => {
+        this.events.publish('user:auth', null, Date.now());
+           console.log('[INFO] App paused');
+          this.storage.forEach((value, key, index) => {
+            if (key !== 'registrationId') {
+              this.storage.remove(key);
+            }
+          });
+
+      });
     });
 
     platform.resume.subscribe(() => {
       this.splashScreen.show();
       this.chk();
     });
+
+  
   }
 
   chk() {
     this.userProvider.checkSession().then(res => {
       setTimeout(() => {
         this.splashScreen.hide();
-
       }, 1000);
     }).catch(exc => {
       let youralert = this.alertCtrl.create({
@@ -214,9 +235,9 @@ export class MyApp {
           //   });
           //   youralert.present();
 
-            // setTimeout(() => {
-            //   this.platform.exitApp();
-            // }, 4000);
+          //   setTimeout(() => {
+          //     this.platform.exitApp();
+          //   }, 4000);
           // }
         }, 1000);
       }

@@ -7,6 +7,7 @@ import { Component, NgZone, ViewChild, ElementRef } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { Events, NavController, NavParams, ViewController, ModalController, AlertController } from 'ionic-angular';
 import { ForgotPinPage } from './../forgot-pin/forgot-pin';
+
 declare var cordova: any;
 
 /**
@@ -38,7 +39,7 @@ export class Authenticate {
 
   test: boolean = true;
   cunt = 1;
-
+  idleState: string = 'not start';
   fetching: boolean = false;
   constructor(private zone: NgZone, public storage: Storage, public events: Events, public navCtrl: NavController, public modalCtrl: ModalController, public navParams: NavParams, public viewCtrl: ViewController, public api: ApiProvider, public userProvider: UserProvider, public alertCtrl: AlertController) {
     this.test = api.isTest;
@@ -53,7 +54,7 @@ export class Authenticate {
   ionViewDidLoad() {
     let advert = this.modalCtrl.create(AdvertPage);
     advert.present();
-
+  
     setTimeout(() => {
       this.vis = true;
     }, 1200);

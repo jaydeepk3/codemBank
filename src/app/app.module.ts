@@ -65,9 +65,9 @@ import { InboxPage } from '../pages/inbox/inbox';
 import { ClaimFromPage } from '../pages/claim-from/claim-from';
 import { SelectContactPage } from '../pages/select-contact/select-contact';
 import { SMS } from '@ionic-native/sms/ngx';
-import { Uid } from '@ionic-native/uid/ngx';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { Device } from '@ionic-native/device/ngx';
+import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 
 @NgModule({
   declarations: [
@@ -120,7 +120,8 @@ import { Device } from '@ionic-native/device/ngx';
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+   NgIdleKeepaliveModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -187,7 +188,6 @@ import { Device } from '@ionic-native/device/ngx';
     DateProvider,
     Market,
     SMS,
-    Uid,
     Device,
     AndroidPermissions,
     ForceUpdateProvider

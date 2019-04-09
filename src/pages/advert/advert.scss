@@ -16,7 +16,7 @@ page-advert {
     background-image: url('../assets/img/3.jpg');
   }
   .img-slider{
-		& .swiper-pagination-bullet{ background-color: #CE7A28 !important; }
+		& .swiper-pagination-bullet{ background-color: #CE7A28 !important;border: 1px solid #CE7A28!important }
 		& .swiper-pagination-bullet-active{ background: #fff !important; border: 1px solid #CE7A28!important}
 
 	}

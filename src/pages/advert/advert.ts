@@ -2,6 +2,7 @@ import { ViewController } from 'ionic-angular/navigation/view-controller';
 import { Component } from '@angular/core';
 import { NavController, NavParams, Events } from 'ionic-angular';
 import { ApiProvider } from './../../providers/api/api';
+
 declare var cordova: any;
 /**
  * Generated class for the AdvertPage page.
@@ -21,6 +22,7 @@ export class AdvertPage {
   // splase2: any;
   // splase3: any;
   splashImg:any=[];
+
   // imgUrl:string='';
   constructor(public navCtrl: NavController, public events: Events, public navParams: NavParams, public viewCtrl: ViewController, public api: ApiProvider) {
 
@@ -29,6 +31,7 @@ export class AdvertPage {
   ionViewDidLoad() {
     setTimeout(() => {
       this.fetchInfo();
+
     }, 300);
 
   }

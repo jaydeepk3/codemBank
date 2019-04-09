@@ -4,7 +4,6 @@ import 'rxjs/add/operator/map';
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
-import { Uid } from '@ionic-native/uid/ngx';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { Device } from '@ionic-native/device/ngx';
 
@@ -41,46 +40,15 @@ export class ApiProvider {
 
   constructor(public http: Http,
     private storage: Storage,
-    private uid: Uid,
     private androidPermissions: AndroidPermissions,
     private device: Device,
     private appVersion: AppVersion) {
-   // this.getImei();
-  //  console.log('Device UUID is: ' + this.device.uuid);
+   
   }
 
   getLink() {
     return this.api().url;
   }
-
-  // getImei(): Promise<boolean> {
-  //   return new Promise(resolve => {
-
-  //     console.log('android')
-  //     this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.READ_PHONE_STATE).then(authorised => {
-  //       console.log(authorised)
-  //       if (authorised) {
-  //         console.log('if')
-  //         resolve(true);
-  //       }
-  //       else {
-  //         console.log('else')
-  //         this.androidPermissions.requestPermission(
-  //           this.androidPermissions.PERMISSION.READ_PHONE_STATE
-  //         ).then(authorisation => {
-  //           console.log('authorisation')
-  //           console.log(authorisation);
-  //          // console.log(this.uid.IMEI);
-  //           // this.IMEI = this.uid.IMEI;
-  //         }, err => {
-  //           console.log(err);
-  //         });
-  //       }
-  //     });
-
-  //   });
-  // }
-
 
 
   query(data: string, user: any, name: string, cache: boolean) {
@@ -109,7 +77,6 @@ export class ApiProvider {
         }
 
         let json = JSON.parse(json_);
-        console.log(json)
         this.storage.get(name).then((val) => {
           let v = val;
 

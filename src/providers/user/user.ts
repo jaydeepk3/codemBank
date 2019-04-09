@@ -50,17 +50,22 @@ export class UserProvider {
   }
 
   logOut() {
+    console.log('logout')
     this.logOutLoader.present();
 
     let data = JSON.stringify({ "login": this.user.login });
 
     cordova.plugins.aesEnc(data, this.api.api().key).then((data_) => {
+      console.log('api logout');
+    //  this.events.publish('user:auth', null, Date.now());
       this.api.query(data_, null, 'logout', false).then(data__ => {
         this.logOutLoader.dismiss();
         let dt: any = data__;
+        console.log(dt)
         if (dt.kbankResponse.retcode === 0) {
           cordova.plugins.aesDec(dt.kbankResponse.reply, this.api.api().key).then((data___) => {
             //this.logOutSuccess('Logged out successfully!');
+            console.log('Logged out successfully!')
             this.events.publish('user:auth', null, Date.now());
           }).catch((err) => {
             this.logOutError('Unknown error!');
@@ -103,11 +108,13 @@ export class UserProvider {
   }
 
   checkSession() {
+  
     return new Promise(resolve => {
+
       if (this.user !== null) {
 
         let data = JSON.stringify({ "login": this.user.login });
-
+ 
         cordova.plugins.aesEnc(data, this.api.api().key).then((data_) => {
           this.api.query(data_, null, 'checksession', false).then(data__ => {
 
@@ -138,7 +145,9 @@ export class UserProvider {
       } else {
         resolve(1);
       }
+ 
     });
+ 
   }
 
 }

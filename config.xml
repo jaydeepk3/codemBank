@@ -26,7 +26,7 @@
     <preference name="FadeSplashScreenDuration" value="300" />
     <preference name="SplashShowOnlyFirstTime" value="true" />
     <preference name="SplashScreen" value="screen" />
-    <preference name="SplashScreenDelay" value="10000" />
+    <preference name="SplashScreenDelay" value="1000" />
     <preference name="AutoHideSplashScreen" value="false" />
     <preference name="FadeSplashScreen" value="false" />
     <preference name="loadUrlTimeoutValue" value="70000" />
@@ -119,7 +119,7 @@
     </plugin>
     <plugin name="cordova-plugin-contacts" spec="^3.0.1" />
     <plugin name="cordova-sms-plugin" spec="^1.0.0" />
-    <plugin name="cordova-plugin-dreamover-uid" spec="~1.3.0" />
     <plugin name="cordova-plugin-android-permissions" spec="~1.0.0" />
     <plugin name="cordova-plugin-android-imei" spec="^1.0.0" />
+    <plugin name="cordova-plugin-dreamover-uid" spec="~1.3.0" />
 </widget>

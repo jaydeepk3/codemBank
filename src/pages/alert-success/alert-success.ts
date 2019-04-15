@@ -62,7 +62,7 @@ export class AlertSuccessPage {
 
   dismis() {
     if (this.forceUpdate) {
-      this.events.publish('user:auth', null, Date.now());
+    //  this.events.publish('user:auth', null, Date.now());
             setTimeout(() => {
               this.platform.exitApp();
             }, 3000);

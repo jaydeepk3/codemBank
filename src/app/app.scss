@@ -59,6 +59,10 @@ page-exiting-customer {
 .form-action {
   text-align: right;
   padding: 16px;
+   .button{
+    background-color:  #CE7A28!important;
+  }
+  
 }
 
 .form-action.no-top-padding {
@@ -351,4 +355,5 @@ input.input-pin {
    }
   }
  // ion-select{ width: 100%; max-width: 100%; padding: 10px 16px 10px 32px; }
+ 
 }

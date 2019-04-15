@@ -1,12 +1,14 @@
 page-authenticate {
+    
   ion-toolbar {
     height: 56px;
   }
-  * {
-    overflow: hidden !important;
-  }
+
   ion-content {
-    overflow: hidden !important;
+    .not-user {
+      text-align: right;
+      padding: 0px!important;
+    }
     #wrapping {
       display: block !important;
       width: 100vw !important;
@@ -21,10 +23,10 @@ page-authenticate {
         bottom: 0;
         margin-top: auto;
         margin-bottom: auto;
-        overflow: hidden !important;
         #main-logo {
-          height: 296px !important;
-          margin-top: -80px !important;
+          height: 270px !important;
+          margin-top: -120px !important;
+          background-size: 38%!important;
           .branded-title {
             padding-right: 0px;
             background-image: none;
@@ -33,36 +35,58 @@ page-authenticate {
           }
         }
         .textClass{
-          min-width: 25px !important;
-          max-width: 25px !important;
-          width: 25px !important;
-          height: 32px !important;
-          color:#937001 !important;
-          background-color:#937001 !important;
-        }
-        .textClassChange{
-          min-width: 25px !important;
-          max-width: 25px !important;
-          width: 25px !important;
-          height: 32px !important;
-          color:#393737 !important;
-          background-color:#393737 !important;
-        }
+            min-width: 30px !important;
+            max-width: 30px !important;
+            width: 30px;
+            height: 30px !important;
+            color: #937001 !important;
+            border: 2px solid;
+            border-radius: 50%;
+          }
+          .textClassChange{
+            min-width: 30px !important;
+            max-width: 30px !important;
+            width: 30px;
+            height: 30px !important;
+            color: #937001 !important;
+            border: 2px solid;
+            border-radius: 50%;
+            background-color:#937001 !important;
+          }
+          .custGrid{
+            text-align:center;
+            font-size:20px;
+            background: #f2f2f2;
+          }
+          .cust-col{
+            padding:15px;
+            border: 1px solid #e4e4e4;
+          }
         div .fgt-btn{
-          margin:15px !important;
+         // margin:15px !important;
           text-align:center !important;
           font-family: 'BrandFont' !important;
           font-size: 15px !important;
         }
         .small-buttons-a,
-        .small-buttons-b {
+        .small-buttons-b
+                 {
           display: block;
           width: 40vw;
           height: 56px;
           background-repeat: no-repeat;
           background-size: contain;
           position: absolute;
-          bottom: 0px;
+        }
+        .smallbuttons
+        {
+          display: block;
+          width: 40vw;
+          height: 56px;
+          background-repeat: no-repeat;
+          background-size: contain;
+          position: absolute;
+          bottom:0px;
         }
         .small-buttons-a {
           background-image: url('../assets/img/activate.png');
@@ -72,6 +96,18 @@ page-authenticate {
         .small-buttons-b {
           background-image: url('../assets/img/open.png');
           background-position: right;
+          right: 0px;
+        }
+        .small-buttons-c{
+          position: inherit;
+          display: block;
+          width: 40vw;
+          height: 56px;
+          background-repeat: no-repeat;
+          background-size: contain;
+          margin-left: 30%;
+          background-image: url('../assets/img/reset.png');
+          background-position: center;
           right: 0px;
         }
         #main-logo {
@@ -88,13 +124,13 @@ page-authenticate {
         }
         .bottom-logo {
           display: block;
-          height: 72px;
-          margin-top: -64px;
+          height: 60px;
+          margin-top: -74px;
           background-image: url('../assets/img/logo-bottom.png');
           background-repeat: no-repeat;
           background-size: contain;
           background-position: center;
-          margin-bottom: 24px;
+        //  margin-bottom: 24px;
         }
         .no-bg-color,
         .no-bg-color * {
@@ -135,4 +171,11 @@ page-authenticate {
       }
     }
   }
+  .no-bg-color{
+    margin-bottom:0px !important;
+  }
+  
+//   .scroll-content {
+//     padding-bottom: 0px !important;
+//  }
 }

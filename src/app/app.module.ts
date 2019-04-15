@@ -68,6 +68,7 @@ import { SMS } from '@ionic-native/sms/ngx';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { Device } from '@ionic-native/device/ngx';
 import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
+import { Contacts } from '@ionic-native/contacts';
 
 @NgModule({
   declarations: [
@@ -189,6 +190,7 @@ import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
     Market,
     SMS,
     Device,
+     Contacts,
     AndroidPermissions,
     ForceUpdateProvider
   ]

@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
-import { Device } from '@ionic-native/device/ngx';
+// import { Device } from '@ionic-native/device/ngx';
 
 /*
   Generated class for the ApiProvider provider.
@@ -41,7 +41,7 @@ export class ApiProvider {
   constructor(public http: Http,
     private storage: Storage,
     private androidPermissions: AndroidPermissions,
-    private device: Device,
+    // private device: Device,
     private appVersion: AppVersion) {
    
   }

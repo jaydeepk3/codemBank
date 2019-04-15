@@ -83,7 +83,7 @@ export class MyApp {
           text: 'Exit App',
           handler: () => {
             // this.userProvider.logOut();
-            this.events.publish('user:auth', null, Date.now());
+            // this.events.publish('user:auth', null, Date.now());
               platform.exitApp();
           }
         }
@@ -96,7 +96,7 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
-
+    
       screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
 
       appVersion.getAppName().then(name => {
@@ -122,8 +122,8 @@ export class MyApp {
               app.getActiveNav().pop();
             } catch (exc) { }
             if (app.getActiveNav().getActive().component == Authenticate) {
-              this.events.publish('user:auth', null, Date.now());
-              platform.exitApp();
+              // this.events.publish('user:auth', null, Date.now());
+               platform.exitApp();
             } else {
               if (this.currentTabIndex > 0) {
                 app.getActiveNav().getActive().getNav().parent.select(0);

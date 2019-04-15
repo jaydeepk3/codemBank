@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, ViewController, ModalController } 
 import { ApiProvider } from './../../providers/api/api';
 import { AlertSuccessPage } from './../alert-success/alert-success';
 import { ChallengePage } from './../challenge/challenge';
-import { SMS } from '@ionic-native/sms';
+// import { SMS } from '@ionic-native/sms';
 
 declare var cordova: any;
 /**

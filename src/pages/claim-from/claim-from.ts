@@ -56,7 +56,7 @@ export class ClaimFromPage {
             inputs: [{
                 name: 'pin',
                 placeholder:"Enter Pin...",
-                type:"password"
+                type:"number"
             }],
             buttons: [
                 {

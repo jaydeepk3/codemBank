@@ -11,29 +11,29 @@
 	<ion-list>
 
 	    <ion-item>
-	      <ion-icon name="call" class="formicon" item-start></ion-icon>
-	      <ion-input placeholder="Enter Phone..." type="tel" clearInput [(ngModel)]="data.phone"></ion-input>
+	      <!-- <ion-icon name="call" class="formicon" item-start></ion-icon> -->
+	      <ion-input class="input-rounded" placeholder="Enter Phone..." type="tel" clearInput [(ngModel)]="data.phone"></ion-input>
 	    </ion-item>
 	    <ion-item>
-	      <ion-icon name="apps" class="formicon" item-start></ion-icon>
-	      <ion-input placeholder="Enter Account Number..." type="tel" clearInput [(ngModel)]="data.account"></ion-input>
+	      <!-- <ion-icon name="apps" class="formicon" item-start></ion-icon> -->
+	      <ion-input class="input-rounded" placeholder="Enter Account Number..." type="tel" clearInput [(ngModel)]="data.account"></ion-input>
 	    </ion-item>
 	    <ion-item>
-	      <ion-icon name="list" class="formicon" item-start></ion-icon>
-	      <ion-input placeholder="Enter National ID..." type="number" clearInput [(ngModel)]="data.nid"></ion-input>
+	      <!-- <ion-icon name="list" class="formicon" item-start></ion-icon> -->
+	      <ion-input class="input-rounded" placeholder="Enter National ID..." type="number" clearInput [(ngModel)]="data.nid"></ion-input>
 	    </ion-item>
 	    <ion-item>
-	      <ion-icon name="card" class="formicon" item-start></ion-icon>
-	      <ion-input placeholder="Enter Last 4 Digit of Card..." type="number" clearInput [(ngModel)]="data.card" minlength="4" maxlength="4"></ion-input>
+	      <!-- <ion-icon name="card" class="formicon" item-start></ion-icon> -->
+	      <ion-input class="input-rounded" placeholder="Enter Last 4 Digit of Card..." type="number" clearInput [(ngModel)]="data.card" minlength="4" maxlength="4"></ion-input>
 	    </ion-item>
 	    <ion-item>
-	      <ion-icon name="cash" class="formicon" item-start></ion-icon>
-	      <ion-input placeholder="Enter One amount done in last 30 days..." type="number" clearInput [(ngModel)]="data.amount"></ion-input>
+	      <!-- <ion-icon name="cash" class="formicon" item-start></ion-icon> -->
+	      <ion-input class="input-rounded" placeholder="Enter One amount done in last 30 days..." type="number" clearInput [(ngModel)]="data.amount"></ion-input>
 	    </ion-item>
 	</ion-list>
 	<div class="form-action no-top-padding" *ngIf="data.phone.length > 0 && data.account.length > 0 && data.nid.length > 0 && data.card.length > 0 && data.amount.length > 0">
-	    <button ion-button icon-left block (tap)="forgotPin()">
-	      <ion-icon name="key"></ion-icon>
+	    <button ion-button round block (tap)="forgotPin()">
+	      <!-- <ion-icon name="key"></ion-icon> -->
 	      Submit
 	    </button>
 	</div>

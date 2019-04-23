@@ -74,10 +74,10 @@
       </ion-item>
 
       <ion-item *ngIf="data_.util.amntedit === 'Y'">
-        <ion-label color="darkText" stacked>
+        <!-- <ion-label color="darkText" stacked>
           Amount
-        </ion-label>
-        <ion-input placeholder="Enter Amount..." type="tel" clearInput [(ngModel)]="res.amount"></ion-input>
+        </ion-label> -->
+        <ion-input class="input-rounded" placeholder="Enter Amount..." type="tel" clearInput [(ngModel)]="res.amount"></ion-input>
       </ion-item>
 
       <ion-item-divider>

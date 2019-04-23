@@ -23,17 +23,17 @@
   <ion-list>
 
     <ion-item (tap)="selectAccount(0)">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Source Account
-      </ion-label>
-      <ion-input placeholder="Select Source Account..." type="text" disabled readonly="true" clearInput [(ngModel)]="sourceAccount.account"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Select Source Account..." type="text" disabled readonly="true" clearInput [(ngModel)]="sourceAccount.account"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Transfer Type
-      </ion-label>
-      <ion-select interface="popover" [(ngModel)]="transferType" (ngModelChange)="typeChange($event)">
+      </ion-label> -->
+      <ion-select class="full-width input-rounded" interface="popover" [(ngModel)]="transferType" (ngModelChange)="typeChange($event)">
         <ion-option value="own">Transfer To Own Account</ion-option>
         <ion-option value="mob">Send To MobileMoney</ion-option>
         <ion-option value="ben">Select Beneficiary</ion-option>
@@ -43,49 +43,49 @@
 
     <!-- Own -->
     <ion-item (tap)="selectAccount(1)" *ngIf="transferType === 'own'">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Beneficiary Account
-      </ion-label>
-      <ion-input placeholder="Select Beneficiary Account..." type="text" disabled readonly="true" clearInput [(ngModel)]="destinationAccountOwn.account"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Select Beneficiary Account..." type="text" disabled readonly="true" clearInput [(ngModel)]="destinationAccountOwn.account"></ion-input>
     </ion-item>
     <!-- /Own -->
 
     <!-- Beneficial -->
     <ion-item (tap)="selectBeneficial()" *ngIf="transferType === 'ben'">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Beneficiary
-      </ion-label>
-      <ion-input placeholder="Select Beneficiary..." type="text" disabled readonly="true" clearInput [(ngModel)]="beneficial.name" (ngModelChange)="beneficialNameChange($event)"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Select Beneficiary..." type="text" disabled readonly="true" clearInput [(ngModel)]="beneficial.name" (ngModelChange)="beneficialNameChange($event)"></ion-input>
     </ion-item>
     <!-- /Beneficial -->
 
     <!-- Other -->
     <ion-item (tap)="selectBank()" *ngIf="transferType === 'other'">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Beneficiary Bank
-      </ion-label>
-      <ion-input placeholder="Select Beneficiary Bank..." type="text" disabled readonly="true" clearInput [(ngModel)]="destinationBank.bankname"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Select Beneficiary Bank..." type="text" disabled readonly="true" clearInput [(ngModel)]="destinationBank.bankname"></ion-input>
     </ion-item>
 
     <ion-item *ngIf="transferType === 'other'">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Beneficiary Account
-      </ion-label>
-      <ion-input placeholder="Enter Beneficiary Account..." type="tel" clearInput [(ngModel)]="destinationAccount"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Enter Beneficiary Account..." type="tel" clearInput [(ngModel)]="destinationAccount"></ion-input>
     </ion-item>
 
     <ion-item *ngIf="transferType === 'other'">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Beneficiary Name
-      </ion-label>
-      <ion-input placeholder="Enter Beneficiary Name..." type="text" clearInput [(ngModel)]="destinationName"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Enter Beneficiary Name..." type="text" clearInput [(ngModel)]="destinationName"></ion-input>
     </ion-item>
 
     <ion-item *ngIf="transferType !== 'own' && transferType !== 'mob'">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Beneficiary Phone
-      </ion-label>
-      <ion-input placeholder="Enter Beneficiary Phone..." type="tel" clearInput [(ngModel)]="destinationPhone"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Enter Beneficiary Phone..." type="tel" clearInput [(ngModel)]="destinationPhone"></ion-input>
     </ion-item>
     <!-- /Other -->
 
@@ -98,39 +98,39 @@
     </ion-item> -->
 
     <ion-item *ngIf="transferType === 'mob'">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Beneficiary Phone
-      </ion-label>
-      <ion-input placeholder="Enter Beneficiary Phone..." type="tel" clearInput [(ngModel)]="destinationAccount"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Enter Beneficiary Phone..." type="tel" clearInput [(ngModel)]="destinationAccount"></ion-input>
     </ion-item>
 
     <ion-item *ngIf="transferType === 'mob'">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Beneficiary Name
-      </ion-label>
-      <ion-input placeholder="Enter Beneficiary Name..." type="text" clearInput [(ngModel)]="destinationName"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Enter Beneficiary Name..." type="text" clearInput [(ngModel)]="destinationName"></ion-input>
     </ion-item>
     <!-- /Mobile -->
 
     <ion-item>
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Amount
-      </ion-label>
-      <ion-input placeholder="Enter Amount..." type="tel" clearInput [(ngModel)]="transferAmount"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Enter Amount..." type="tel" clearInput [(ngModel)]="transferAmount"></ion-input>
     </ion-item>
 
     <ion-item (tap)="selectCurrency()">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Currency
-      </ion-label>
-      <ion-input placeholder="Select Currency..." type="text" disabled readonly="true" clearInput [(ngModel)]="transferCurrency.isocode"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Select Currency..." type="text" disabled readonly="true" clearInput [(ngModel)]="transferCurrency.isocode"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Comments/Description
-      </ion-label>
-      <ion-input placeholder="Enter Comments..." type="text" clearInput [(ngModel)]="transferDescription"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Enter Comments..." type="text" clearInput [(ngModel)]="transferDescription"></ion-input>
     </ion-item>
 
   </ion-list>

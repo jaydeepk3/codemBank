@@ -29,7 +29,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 
 import { ApiProvider } from '../providers/api/api';
 import { UserProvider } from '../providers/user/user';
@@ -64,11 +64,12 @@ import { ChallengePage } from '../pages/challenge/challenge';
 import { InboxPage } from '../pages/inbox/inbox';
 import { ClaimFromPage } from '../pages/claim-from/claim-from';
 import { SelectContactPage } from '../pages/select-contact/select-contact';
-import { SMS } from '@ionic-native/sms/ngx';
+// import { SMS } from '@ionic-native/sms/ngx';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
-import { Device } from '@ionic-native/device/ngx';
-import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 import { Contacts } from '@ionic-native/contacts';
+
+// import { Device } from '@ionic-native/device/ngx';
+// import { NgIdleKeepaliveModule } from '@ng-idle/keepalive';
 
 @NgModule({
   declarations: [
@@ -120,9 +121,12 @@ import { Contacts } from '@ionic-native/contacts';
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp,{
+      scrollAssist: true,
+     autoFocusAssist: true
+      }),
     IonicStorageModule.forRoot(),
-   NgIdleKeepaliveModule
+   // NgIdleKeepaliveModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -188,9 +192,9 @@ import { Contacts } from '@ionic-native/contacts';
     DatePicker,
     DateProvider,
     Market,
-    SMS,
-    Device,
-     Contacts,
+    Contacts,
+    // SMS,
+    // Device,
     AndroidPermissions,
     ForceUpdateProvider
   ]

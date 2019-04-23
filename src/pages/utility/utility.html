@@ -20,14 +20,14 @@
 <ion-content>
   <ion-list>
     <ion-item (tap)="selectAccount(0)">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Debit Account
-      </ion-label>
-      <ion-input placeholder="Select Debit Account..." type="text" readonly="true" clearInput [(ngModel)]="sourceAccount.account"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Select Debit Account..." type="text" readonly="true" clearInput [(ngModel)]="sourceAccount.account"></ion-input>
     </ion-item>
 
     <ion-item *ngIf="util.sendown === 'Y' || util.saveben === 'Y'">
-      <ion-select interface="popover" [(ngModel)]="numberType" (ngModelChange)="typeChange($event)">
+      <ion-select class="input-rounded full-width" interface="popover" [(ngModel)]="numberType" (ngModelChange)="typeChange($event)">
         <ion-option value="own" *ngIf="util.sendown === 'Y'">Own Number</ion-option>
         <ion-option value="ben" *ngIf="util.saveben === 'Y'">Select Beneficiary</ion-option>
         <ion-option value="other">Other {{util.fieldname}}</ion-option>
@@ -35,31 +35,31 @@
     </ion-item>
 
     <ion-item (tap)="selectBeneficial()" *ngIf="numberType === 'ben'">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Beneficiary
-      </ion-label>
-      <ion-input placeholder="Select Beneficiary..." type="text" readonly="true" clearInput [(ngModel)]="beneficial.name"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Select Beneficiary..." type="text" readonly="true" clearInput [(ngModel)]="beneficial.name"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         {{util.fieldname}}
-      </ion-label>
-      <ion-input [disabled]="numberType === 'ben' ? '' : null" [placeholder]="'Enter ' + util.fieldname + '...'" [type]="util.fieldtype === 'N' ? 'tel' : 'text'" [(ngModel)]="creditaccount"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" [disabled]="numberType === 'ben' ? '' : null" [placeholder]="'Enter ' + util.fieldname + '...'" [type]="util.fieldtype === 'N' ? 'tel' : 'text'" [(ngModel)]="creditaccount"></ion-input>
     </ion-item>
 
     <ion-item *ngIf="util.benphone === 'Y'">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Beneficiary Phone
-      </ion-label>
-      <ion-input placeholder="Enter Beneficiary Phone..." type="tel" [(ngModel)]="benPhone"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Enter Beneficiary Phone..." type="tel" [(ngModel)]="benPhone"></ion-input>
     </ion-item>
 
     <ion-item *ngIf="util.amntedit === 'Y'">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Amount
-      </ion-label>
-      <ion-input placeholder="Enter Amount..." type="tel" clearInput [(ngModel)]="amount"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Enter Amount..." type="tel" clearInput [(ngModel)]="amount"></ion-input>
     </ion-item>
 
 
@@ -73,10 +73,10 @@
     </ion-item>
 
     <ion-item *ngIf="saveBenef">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Beneficiary Name
-      </ion-label>
-      <ion-input placeholder="Enter Beneficiary Name..." type="text" clearInput [(ngModel)]="benefName"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Enter Beneficiary Name..." type="text" clearInput [(ngModel)]="benefName"></ion-input>
     </ion-item>
   </ion-list>
 

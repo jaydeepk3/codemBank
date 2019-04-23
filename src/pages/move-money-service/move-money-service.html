@@ -22,104 +22,104 @@
 <ion-content>
   <ion-list *ngIf="service.movemoneyid !== '99'">
     <ion-item (tap)="selectAccount(0)">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Source Account
-      </ion-label>
-      <ion-input placeholder="Select Source Account..." type="text" disabled readonly="true" clearInput [(ngModel)]="sourceAccount.account"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Select Source Account..." type="text" disabled readonly="true" clearInput [(ngModel)]="sourceAccount.account"></ion-input>
     </ion-item>
     <ion-item *ngIf="service.banktype === 'A'" (tap)="selectAccount(1)">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Beneficiary Account
-      </ion-label>
-      <ion-input placeholder="Select Beneficiary Account..." type="text" disabled readonly="true" clearInput [(ngModel)]="destinationAccount.account"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Select Beneficiary Account..." type="text" disabled readonly="true" clearInput [(ngModel)]="destinationAccount.account"></ion-input>
     </ion-item>
 
     <ion-item *ngIf="service.banktype === 'L'" (tap)="selectBeneficial()">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Beneficiary
-      </ion-label>
-      <ion-input placeholder="Select Beneficiary..." type="text" disabled readonly="true" clearInput [(ngModel)]="beneficial.name" (ngModelChange)="beneficialNameChange($event)"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Select Beneficiary..." type="text" disabled readonly="true" clearInput [(ngModel)]="beneficial.name" (ngModelChange)="beneficialNameChange($event)"></ion-input>
     </ion-item>
 
     <ion-item *ngIf="service.banktype === 'B'" (tap)="selectBank()">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Beneficiary Bank
-      </ion-label>
-      <ion-input placeholder="Select Beneficiary Bank..." type="text" disabled readonly="true" clearInput [(ngModel)]="bank.bankname"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Select Beneficiary Bank..." type="text" disabled readonly="true" clearInput [(ngModel)]="bank.bankname"></ion-input>
     </ion-item>
     <ion-item *ngIf="service.banktype === 'B'">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Beneficiary Account
-      </ion-label>
-      <ion-input placeholder="Enter Beneficiary Account..." type="tel" clearInput [(ngModel)]="destinationAccount.account"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Enter Beneficiary Account..." type="tel" clearInput [(ngModel)]="destinationAccount.account"></ion-input>
     </ion-item>
     <ion-item *ngIf="service.banktype === 'P'">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Card Number
-      </ion-label>
-      <ion-input placeholder="Enter Card Number..." type="tel" clearInput [(ngModel)]="destinationAccount.account"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Enter Card Number..." type="tel" clearInput [(ngModel)]="destinationAccount.account"></ion-input>
     </ion-item>
     <ion-item *ngIf="service.banktype === 'B' || service.banktype === 'M' || service.banktype === 'O' || service.banktype === 'P'">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Beneficiary Name
-      </ion-label>
-      <ion-input placeholder="Enter Beneficiary Name..." type="text" clearInput [(ngModel)]="beneficial.name" style="width:80%;"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Enter Beneficiary Name..." type="text" clearInput [(ngModel)]="beneficial.name" style="width:80%;"></ion-input>
       <ion-icon name="contacts" (tap)="selectContacts()" item-end style="float:right;font-size: 24px"></ion-icon>
     </ion-item>
     <ion-item *ngIf="service.banktype === 'B' || service.banktype === 'M' || service.banktype === 'O' || service.banktype === 'P'">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Beneficiary Phone
-      </ion-label>
-      <ion-input placeholder="Enter Beneficiary Phone..." type="tel" clearInput [(ngModel)]="beneficial.benphone"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Enter Beneficiary Phone..." type="tel" clearInput [(ngModel)]="beneficial.benphone"></ion-input>
     </ion-item>
     <ion-item *ngIf="service.banktype === 'B' || service.banktype === 'P'">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Beneficiary Email
-      </ion-label>
-      <ion-input placeholder="Enter Beneficiary Email..." type="email" clearInput [(ngModel)]="beneficial.email"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Enter Beneficiary Email..." type="email" clearInput [(ngModel)]="beneficial.email"></ion-input>
     </ion-item>
     <ion-item *ngIf="service.banktype === 'O'" (tap)="selectOperator()">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Operator
-      </ion-label>
-      <ion-input placeholder="Select Operator..." type="text" disabled readonly="true" clearInput [(ngModel)]="operator.name"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Select Operator..." type="text" disabled readonly="true" clearInput [(ngModel)]="operator.name"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Amount
-      </ion-label>
-      <ion-input placeholder="Enter Amount..." type="tel" clearInput [(ngModel)]="amount"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Enter Amount..." type="tel" clearInput [(ngModel)]="amount"></ion-input>
     </ion-item>
     <ion-item (tap)="selectCurrency()">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Currency
-      </ion-label>
-      <ion-input placeholder="Select Currency..." type="text" disabled readonly="true" clearInput [(ngModel)]="currency.isocode"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Select Currency..." type="text" disabled readonly="true" clearInput [(ngModel)]="currency.isocode"></ion-input>
     </ion-item>
     <ion-item *ngIf="service.hasquestion === 'Y'">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Secret Question
-      </ion-label>
-      <ion-input placeholder="Enter Secret Question..." type="text" clearInput [(ngModel)]="secretquestion"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Enter Secret Question..." type="text" clearInput [(ngModel)]="secretquestion"></ion-input>
     </ion-item>
     <ion-item *ngIf="service.hasquestion === 'Y'">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Secret Answer
-      </ion-label>
-      <ion-input placeholder="Enter Secret Answer..." type="text" clearInput [(ngModel)]="secretanswer"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Enter Secret Answer..." type="text" clearInput [(ngModel)]="secretanswer"></ion-input>
     </ion-item>
     <ion-item *ngIf="service.hascountry === 'Y'" (tap)="selectCountry()">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Country
-      </ion-label>
-      <ion-input placeholder="Select Country..." type="text" disabled readonly="true" clearInput [(ngModel)]="country.name"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Select Country..." type="text" disabled readonly="true" clearInput [(ngModel)]="country.name"></ion-input>
     </ion-item>
     <ion-item *ngIf="service.banktype !== 'P'">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Comments/Description
-      </ion-label>
-      <ion-input placeholder="Enter Comments..." type="text" clearInput [(ngModel)]="description"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Enter Comments..." type="text" clearInput [(ngModel)]="description"></ion-input>
     </ion-item>
   </ion-list>
 

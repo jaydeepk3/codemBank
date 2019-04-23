@@ -20,31 +20,31 @@
 <ion-content>
   <ion-list>
     <ion-item (tap)="selectAccount(0)">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Account
-      </ion-label>
-      <ion-input placeholder="Select Account..." type="text" readonly="true" clearInput [(ngModel)]="account.account"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Select Account..." type="text" readonly="true" clearInput [(ngModel)]="account.account"></ion-input>
     </ion-item>
 
     <ion-item (tap)="selectBranch(0)" *ngIf="service.branch === 'Y'">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Branch
-      </ion-label>
-      <ion-input placeholder="Select Branch..." type="text" readonly="true" clearInput [(ngModel)]="branch.name"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Select Branch..." type="text" readonly="true" clearInput [(ngModel)]="branch.name"></ion-input>
     </ion-item>
 
     <ion-item *ngIf="service.branch === 'N'">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Reason
-      </ion-label>
-      <ion-input placeholder="Enter Reason..." type="text" [(ngModel)]="reason"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Enter Reason..." type="text" [(ngModel)]="reason"></ion-input>
     </ion-item>
 
     <ion-item *ngIf="service.email === 'Y'">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Email
-      </ion-label>
-      <ion-input placeholder="Enter Email..." type="email" readonly="true" [(ngModel)]="email"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Enter Email..." type="email" readonly="true" [(ngModel)]="email"></ion-input>
     </ion-item>
   </ion-list>
 

@@ -5,15 +5,14 @@ page-open-wallet-account {
 	ion-item{
 		margin-bottom:10px !important;
 		background-color: transparent!important;
+		box-shadow: none!important;
+		padding: 0px!important;
 	}
-	.full-width
-	{
-		width:100% !important;
-		min-width:100%;
-		max-width:100%;
-	}
+
+
 	.select-md .select-icon .select-icon-inner {
 		color : #cf7c34 !important;
 		left : unset !important;
 	}
+
 }

@@ -20,10 +20,10 @@
 <ion-content>
   <ion-list>
     <ion-item (tap)="selectAccount(0)">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Account
-      </ion-label>
-      <ion-input placeholder="Select Account..." type="text" readonly="true" clearInput [(ngModel)]="account.account"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Select Account..." type="text" readonly="true" clearInput [(ngModel)]="account.account"></ion-input>
     </ion-item>
     <!--<ion-item>
       <ion-label color="darkText" stacked>
@@ -32,10 +32,10 @@
       <ion-datetime placeholder="Select Start Date..." displayFormat="DD/MM/YYYY" [(ngModel)]="start"></ion-datetime>
     </ion-item>-->
     <ion-item (tap)="selectDate(0)">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Start Date
-      </ion-label>
-      <ion-input placeholder="Start Date..." type="text" readonly="true" [(ngModel)]="start"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Start Date..." type="text" readonly="true" [(ngModel)]="start"></ion-input>
     </ion-item>
     <!--<ion-item>
       <ion-label color="darkText" stacked>
@@ -44,16 +44,16 @@
       <ion-datetime placeholder="Select End Date..." displayFormat="DD/MM/YYYY" [(ngModel)]="end"></ion-datetime>
     </ion-item>-->
     <ion-item (tap)="selectDate(1)">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         End Date
-      </ion-label>
-      <ion-input placeholder="End Date..." type="text" readonly="true" [(ngModel)]="end"></ion-input>
+      </ion-label> -->
+      <ion-input  class="input-rounded" placeholder="End Date..." type="text" readonly="true" [(ngModel)]="end"></ion-input>
     </ion-item>
     <ion-item *ngIf="service.email === 'Y'">
-      <ion-label color="darkText" stacked>
+      <!-- <ion-label color="darkText" stacked>
         Email
-      </ion-label>
-      <ion-input placeholder="Enter Email..." type="email" readonly="true" [(ngModel)]="email"></ion-input>
+      </ion-label> -->
+      <ion-input class="input-rounded" placeholder="Enter Email..." type="email" readonly="true" [(ngModel)]="email"></ion-input>
     </ion-item>
   </ion-list>
 

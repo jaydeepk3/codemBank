@@ -4,4 +4,14 @@ page-bank-service-verify {
       font-weight: bold !important;
     }
   }
+  ion-item{
+		margin-bottom:10px !important;
+		background-color: transparent!important;
+		box-shadow: none!important;
+	}
+
+	.select-md .select-icon .select-icon-inner {
+		color : #cf7c34 !important;
+		left : unset !important;
+	}
 }

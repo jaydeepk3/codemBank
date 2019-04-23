@@ -14,7 +14,7 @@
 
 
 <ion-content padding>
-  <ion-list class="bank-background">
+  <ion-list class="bank-background" no-lines>
 
     <ion-item>
       <!-- <ion-icon class="formicon" name="person" item-start></ion-icon> -->
@@ -25,16 +25,17 @@
       <ion-input class="input-rounded" type="text" clearInput [(ngModel)]="data.lname" placeholder="Enter Last Name..."></ion-input>
     </ion-item>
     <ion-item>
-      <!-- <ion-icon class="formicon" name="transgender" item-start></ion-icon> -->
-      <ion-select interface="popover" [(ngModel)]="data.gender" placeholder="Select Gender..." class="full-width">
-        <!-- <ion-option value="">Select Gender</ion-option> -->
+      <!-- <ion-icon name="transgender" item-start></ion-icon> -->
+      <ion-select  interface="popover" [(ngModel)]="data.gender" placeholder="Select Gender..." class="full-width input-rounded">
+        <!-- <ion-option value="">Select Gender...</ion-option> -->
         <ion-option value="7">Female</ion-option>
         <ion-option value="8">Male</ion-option>
       </ion-select>
     </ion-item>
+
     <ion-item (tap)="selectDate()">
       <!-- <ion-icon class="formicon" name="calendar" item-start></ion-icon> -->
-      <ion-input class="input-rounded" type="text" disabled readonly="true" clearInput [(ngModel)]="data.dob" placeholder="Select Date fo Birth..."> </ion-input>
+      <ion-input class="input-rounded" type="text" disabled readonly="true"  [(ngModel)]="data.dob" placeholder="Select Date fo Birth..."> </ion-input>
     </ion-item>
     <!--<ion-item>
       <ion-label color="darkText" floating>

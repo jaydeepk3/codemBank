@@ -17,18 +17,18 @@
   src: url('../assets/font/expressa.ttf');
 }
 .input-rounded{
-  border: 2px solid #fff ;
-  -moz-border-radius: 18px !important;
-  -webkit-border-radius: 18px !important;
-  border-radius: 18px !important;
-  -moz-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.2) !important;
-  -webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.2) !important;
-  box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.2) !important;
+  border: none ;
+  -moz-border-radius: 0px !important;
+  -webkit-border-radius: 0px !important;
+  border-radius: 0px !important;
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
   outline: 0 !important;
   background-color: white;
   -webkit-appearance: none !important;
-  margin:4px;
-  position : initial !important;
+  // margin:4px;
+  // position : initial !important;
   padding: 0px 10px;
 }
 .full-width{
@@ -38,18 +38,18 @@
 }
 ion-input:focus{
   border-color:color($colors, primary)!important;
-  box-shadow: inset 0 -1px 0 0 color($colors, primary)!important; 
+  box-shadow: none!important; 
 }
 .item-md.item-input.item-input-has-focus .item-inner, .item-md.item-input.input-has-focus .item-inner{
       border-bottom-color: transparent!important;
-    box-shadow: inset 0 -1px 0 0 transparent!important; 
+    box-shadow: none!important; 
 }
-.list-md .item-input.item-input-has-focus:last-child, .list-md .item-input.input-has-focus:last-child{
-  border-bottom-color: transparent!important;
-}
+// .list-md .item-input.item-input-has-focus:last-child, .list-md .item-input.input-has-focus:last-child{
+//   border-bottom-color: transparent!important;
+// }
 .item-input-has-focus{
   ion-input{
-    border-color:color($colors, primary)!important;
+    border-color:transparent!important;
   }
 }
 
@@ -72,6 +72,40 @@ ion-input:focus{
   }
   .list-md  .item-block:last-child .item-inner{
     border-bottom: 1px solid transparent;
+  }
+  .item-input-has-focus{
+    ion-input{
+      border-color:transparent !important;
+      outline-offset: 0px !important;
+      outline: none !important;
+    }
+  }
+  //25th april css
+  .item-md.item-block .item-inner{
+    padding: 0px;
+  }
+  .item-md.item-block{
+    padding: 0px;
+    //margin-bottom: 14px!important;
+  //  border: 2px solid #fff ;
+    -moz-border-radius: 18px !important;
+    -webkit-border-radius: 18px !important;
+    border-radius: 18px !important;
+    -moz-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.2) !important;
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.2) !important;
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.2) !important;
+    outline: 0 !important;
+    background-color: white!important;
+    -webkit-appearance: none !important;
+    padding: 0px 10px;
+  }
+  .item-input-has-focus{
+    border: 2px solid color($colors, primary) !important;
+    
+  }
+  .item-block{
+    margin: 14px!important;
+    width: 90%;
   }
 page-clients-tab,
 page-agents-tab,
